@@ -25,7 +25,7 @@ def local_max(file):
     iter_=2
     loop=int(file.shape[1]/iter_)
     for i in range(file.shape[0]):
-        filemax_thresh=np.amax(file[i])-1
+        filemax_thresh=np.amax(file[i])-100
         for j in range(loop-1):
             for k in range(loop-1):
                 max_=np.amax(file[i,(j*iter_):((j+1)*iter_),(k*iter_):((k+1)*iter_)])
@@ -56,16 +56,13 @@ def centriod(file,loc_max,box_size):
 def display(num_of_boxes,picture):
     start=time.perf_counter()
 
-    box_size=np.zeros(num_of_boxes,dtype=int)
-    loc_centroid=np.zeros([num_of_boxes,100,2])
-    error=np.zeros([num_of_boxes,100,2])
-    avg_diff=np.zeros([num_of_boxes,2])
-
-    for i in range(num_of_boxes):
-        box_size[i]=int((2*(i+1))+1)
-    for j in range(num_of_boxes):
+    box_size=np.arange(3,num_of_boxes+1,2,dtype=int)
+    loc_centroid=np.zeros([len(box_size),100,2])
+    error=np.zeros([len(box_size),100,2])
+    avg_diff=np.zeros([len(box_size),2])
+    for j in range(len(box_size)):
         loc_centroid[j]=centriod(file,loc_max,box_size[j])
-    for k in range(num_of_boxes):
+    for k in range(len(box_size)):
         error[k]=np.absolute(np.subtract(loc_centroid[k],points))
         avg_diff[k,0],avg_diff[k,1]=np.average(error[k,0:,0]),np.average(error[k,0:,1])
     fig_one_box=np.argmin(avg_diff[:,0])
@@ -80,9 +77,11 @@ def display(num_of_boxes,picture):
     ax2.title.set_text('Average Difference in Position')
     ax2.set_xlabel('Box Size (in odd increments)')
     ax2.set_ylabel('Differance From Ground Truth (absolute value)')
-    ax2.plot(avg_diff[0:,0],label='X Values',linestyle='-')
-    ax2.plot(avg_diff[0:,1],label='Y Values',linestyle='--')
+    ax2.plot(box_size,avg_diff[0:,0],label='X Values',linestyle='-')
+    ax2.plot(box_size,avg_diff[0:,1],label='Y Values',linestyle='--')
     ax2.set_ylim(0)
+    ax2.set_xlim(box_size[0],box_size[-1])
+    ax2.hlines(avg_diff[fig_one_box,0],box_size[0],box_size[-1],linestyle=':',color='k',label='Minimum at {}'.format(np.round((avg_diff[fig_one_box,0]),4)))
     ax2.legend(shadow=True,fancybox=True)
     stop=time.perf_counter()
     print('Total Time Taken {}s'.format(np.round((stop-start),2)))
@@ -96,5 +95,5 @@ file,ground_truth=input("Perfect Spots {}/Perfect Spots {}.tif".format(folder,fo
 loc_max=np.delete((local_max(file)),0,0)
 points=np.add(np.full((ground_truth.shape),24.5),ground_truth)
 
-#display(num_of_boxes(max is 24),picture)
-display(24,16)
+#display(num_of_boxes(max is 49 as picture size is 50x50),picture(max is 99))
+display(49,99)
