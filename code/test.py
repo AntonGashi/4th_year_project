@@ -102,4 +102,3 @@ class spot_finder:
     #display(num_of_boxes(max is 24),picture)
 
 first=spot_finder("r1.00",24,0)
-first.display(first)
