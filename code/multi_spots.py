@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import time
 from numba import jit
 import pandas as pd
-
+import scipy.optimize as sco
 
 def input(path_to_tiff,path_to_groundtruth):
     file=tf.TiffSequence("{}".format(path_to_tiff)).asarray()
@@ -89,13 +89,39 @@ def display(num_of_boxes,picture):
     plt.show()
     pass
 
+def gaussian(x, amp, cen, wid):
+    return amp * np.exp(-(x-cen)**2 / wid)
+def triangle(x,m,a):
+    return m*(x-a)*np.sign((a-x))+m*a+(m*(x/2-a)*np.sign((a-x/2))+m*a)
+
+
+
 #enter like: folder="r1.00 r1.41 r2.00 r2.83 r4.00 r5.66 r8.00"
 folder="r8.00"
 file,ground_truth=input("Perfect Spots {}/Perfect Spots {}.tif".format(folder,folder),"Perfect Spots {}/groundtruth.csv".format(folder))
 #file,ground_truth=input("Multiple Spots/AF647_npc_1frame.tif")
 loc_max=np.delete((local_max(file)),0,0)
-
 points=np.add(np.full((ground_truth.shape),24.5),ground_truth)
 
 #display(num_of_boxes(max is 49 as picture size is 50x50),picture(max is 99))
-display(49,0)
+#display(49,0)
+
+fig, (ax1,ax2) = plt.subplots(nrows=1,ncols=2,figsize=(8,4),constrained_layout=True)
+
+###1-d gaussian
+location=centriod(file,loc_max,9)
+x=np.arange(0,50,1)
+popt, pcov = sco.curve_fit(gaussian, x,file[0,24,:])
+ym=gaussian(x,popt[0],popt[1],popt[2])
+print('gaussian fit guess [24 {}]'.format(popt[1]),'\ngroundtruth :{}'.format(points[0]),'\ncentroid guess :{}'.format(location[0]))
+ax1.plot(file[0,24,:],':')
+ax1.plot(x,ym)
+
+###1-d triangle
+x=np.arange(0,10,1)
+popt, pcov = sco.curve_fit(triangle, x,file[0,24,20:30],method='lm')
+ym=triangle(x,popt[0],popt[1])
+print(popt[1])
+ax2.plot(file[0,24,20:30],':')
+ax2.plot(x,ym)
+plt.show()
