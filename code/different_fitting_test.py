@@ -55,8 +55,8 @@ def centriod(file,loc_max,box_size):
 
 
 #enter like: folder="r1.00 r1.41 r2.00 r2.83 r4.00 r5.66 r8.00"
-folder="r2.83"
-file,ground_truth=input("Perfect Spots {}/spot001.tif".format(folder),"Perfect Spots {}/groundtruth.csv".format(folder))
+folder="r8.00"
+file,ground_truth=input("Perfect Spots {}/spot014.tif".format(folder),"Perfect Spots {}/groundtruth.csv".format(folder))
 #file,ground_truth=input("Perfect Spots {}/Perfect Spots {}.tif".format(folder,folder),"Perfect Spots {}/groundtruth.csv".format(folder))
 #file,ground_truth=input("Multiple Spots/AF647_npc_1frame.tif")
 loc_max=np.delete((local_max(file)),0,0)
@@ -65,10 +65,20 @@ points=np.add(np.full((ground_truth.shape),24.5),ground_truth)
 end_centroid=time.perf_counter()
 finish=end_centroid-start_centroid
 
+
 def gaussian(x, amp, cen, wid):
     return amp * np.exp(-(x-cen)**2 / wid)
 def triangle(x,m,a):
     return (m*(x-a)*np.sign((a-x))+m*a)
+    
+def triangle2(x,m,a):
+    fit=np.zeros_like(x)
+    for i in range(len(x)):
+        if np.absolute(x[i])>=1:
+            fit[i]=0
+        else:
+            fit[i]=1-np.absolute(x[i])
+    return fit
 
 image=0
 

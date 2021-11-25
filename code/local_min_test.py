@@ -25,7 +25,8 @@ def local_max(file):
 
     file2=cv.medianBlur(file,5)
     alt_file=np.zeros_like(file)
-    results=np.zeros((file.shape[0],100,2))
+    results=np.zeros((2,2))
+ 
     iter_=13
     loop=int(file.shape[1]/iter_)
     for i in range(file.shape[0]):
@@ -33,13 +34,10 @@ def local_max(file):
             for k in range(loop):
                 alt_file[i,(j*iter_):((j+1)*iter_),(k*iter_):((k+1)*iter_)]=np.amax(file[i,(j*iter_):((j+1)*iter_),(k*iter_):((k+1)*iter_)])
     for i in range(file.shape[0]):
-        count=0
         for j in range(file.shape[1]):
             for k in range(file.shape[2]):
-                if file[i,j,k]==alt_file[i,j,k] and (np.max(file2[i])*0.4)<file[i,j,k]:
-                    
-                    results[i]=[count,[j,k]]
-                    count+=1
+                if file[i,j,k]==alt_file[i,j,k]:
+                    results=np.vstack((results,np.array([j,k])))
     return results,alt_file
 
 
