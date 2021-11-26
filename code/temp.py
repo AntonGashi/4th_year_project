@@ -3,41 +3,58 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.optimize as sco
 import tifffile as tf
+from numba import jit
 
 image=0
 file=tf.TiffSequence("Perfect Spots r8.00/spot014.tif").asarray()
 
-box_size=11
-
-def triangle(centre,half_base,height,size):
-    x=np.linspace((centre-half_base),(centre),size)
-    y=np.linspace(0,height,size)
+@jit(nopython=True)
+def triangle(centre,half_base,height):
+    x=np.arange((centre-half_base),(centre),1)
+    y=np.linspace(0,height,half_base)
     return x,y
-
-def tri_area(x,y):
-    area=np.zeros(len(x)-1)
+@jit(nopython=True)
+def tri_area(x,y,file,centre,half_base):
+    area=np.zeros_like(file[image,24,:])
     base=np.absolute(x[0]-x[1])
-    for i in range(len(x)-1):
-        box_heigth=y[i]
-        box_area=base*box_heigth
-        tri_area=0.5*base*(y[i+1]-y[i])
-        area[i]=box_area+tri_area
+    for i in range((centre-half_base),(centre)):
+        box_heigth=y[i-(centre-half_base)]
+        area[i]=base*box_heigth
     return area
+@jit(nopython=True)
+def res(file,centre,half_base,height,image):
+    tri_x,tri_y=triangle(centre,half_base,height)
+    area=tri_area(tri_x,tri_y,file,centre,half_base)
+    return np.absolute(file[image,24,:]-area)
+@jit(nopython=True)
+def opt(file,image):
+    output=np.zeros((10,8,26000))
+    for i in range(20,30):
+        for j in range(3,11):
+            for k in range(40000,66000):
+                output[i-20,j-3,k-40000]=np.sqrt(np.mean(res(file,i,j,k,image)**2))
+        print(i)
+    return output,(np.where(output==np.min(output)))
+
+#output,min_vals=opt(file,image)
 
 
-tri_x,tri_y=triangle(24,7,60000,box_size)
-total_image_area=np.sum(file[image,24,20:30])
-tri_area=tri_area(tri_x,tri_y)
-res=np.absolute(tri_area-file[image,24,20:30])
 
 
-fig, (ax1,ax2) = plt.subplots(nrows=2,ncols=1,figsize=(8,4),constrained_layout=True)
+centre,half_base,height=27,9,50658
+tri_x,tri_y=triangle(centre,half_base,height)
+tri_area=tri_area(tri_x,tri_y,file,centre,half_base)
+res=np.absolute(file[image,24,:]-tri_area)
+
+
+fig,(ax1,ax2)=plt.subplots(nrows=2,ncols=1,figsize=(8,4),constrained_layout=True)
 
 ax1.plot(tri_x,tri_y)
 ax1.plot(file[image,24,:])
 ax1.set_xlim(0,50)
 
-x=np.arange(20,30,1)
-ax2.bar(x,res)
+x2=np.arange(0,50,1)
+ax2.bar(x2,res)
+#ax2.bar(x2,file[image,24,:])
 ax2.set_xlim(0,50)
 plt.show()
