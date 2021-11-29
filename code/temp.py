@@ -8,28 +8,19 @@ from numba import jit
 image=0
 file=tf.TiffSequence("Perfect Spots r8.00/spot014.tif").asarray()
 
-#@jit(nopython=True)
+@jit(nopython=True)
 def triangle(centre,half_base,height):
     x=np.arange((centre-half_base),(centre+half_base),1)
     y=np.linspace(0,height,half_base)
     y=np.append(y,y[::-1])
     return x,y
-'''
-#@jit(nopython=True)
-def tri_area(x,y,file,centre,half_base):
-    area=np.zeros_like(file[image,24,:])
-    for i in range((centre-half_base),(centre+half_base)):
-        area[i]=y[i-(centre-half_base)]
-    return area
-'''
-#@jit(nopython=True)
+@jit(nopython=True)
 def res(file,centre,half_base,height,image):
     tri_x,tri_y=triangle(centre,half_base,height)
-    area=np.zeros_like(file[image,24,:])
+    area=np.zeros_like(file[image,24,:],dtype=np.float64)
     for i in range((centre-half_base),(centre+half_base)):
         area[i]=tri_y[i-(centre-half_base)]
-    print(len(file[image,24,:]),len(area))
-    return np.absolute(np.subtract(file[image,24,:],area))
+    return np.absolute(file[image,24,:]-area)
 @jit(nopython=True)
 def opt(file,image):
     output=np.zeros((10,8,26000))
@@ -43,20 +34,22 @@ def opt(file,image):
 #output,min_vals=opt(file,image)
 #print(min_vals)
 
-centre,half_base,height=25,6,60058
+centre,half_base,height=24,7,61748
 tri_x,tri_y=triangle(centre,half_base,height)
 res=res(file,centre,half_base,height,image)
 
+'''
 fig,(ax1,ax2)=plt.subplots(nrows=2,ncols=1,figsize=(8,4),constrained_layout=True)
 
 ax1.plot(tri_x,tri_y)
 ax1.plot(file[image,24,:])
 ax1.set_xlim(0,50)
+ax1.set_ylim(0,65000)
 
 x2=np.arange(0,50,1)
-#ax2.bar(x2,file[image,24,:])
-#ax2.bar(x2,res)
-
-ax2.plot(x2,res)
+ax2.bar(x2,file[image,24,:])
+ax2.bar(x2,res)
+ax2.set_ylim(0,65000)
 ax2.set_xlim(0,50)
 plt.show()
+'''
