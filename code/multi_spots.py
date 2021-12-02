@@ -88,13 +88,6 @@ def display(num_of_boxes,picture):
     plt.show()
     pass
 
-def gaussian(x, amp, cen, wid):
-    return amp * np.exp(-(x-cen)**2 / wid)
-def triangle(x,m,a):
-    return m*(x-a)*np.sign((a-x))+m*a+(m*(x/2-a)*np.sign((a-x/2))+m*a)
-
-
-
 #enter like: folder="r1.00 r1.41 r2.00 r2.83 r4.00 r5.66 r8.00"
 folder="r8.00"
 file,ground_truth=input("Perfect Spots {}/Perfect Spots {}.tif".format(folder,folder),"Perfect Spots {}/groundtruth.csv".format(folder))

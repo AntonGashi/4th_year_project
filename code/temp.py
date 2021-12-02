@@ -5,11 +5,14 @@ import scipy.optimize as sco
 import tifffile as tf
 from numba import jit
 import time
+import pandas as pd
 
 start=time.perf_counter()
 
 image=0
 file=tf.TiffSequence("Perfect Spots r8.00/spot014.tif").asarray()
+groundtruth=pd.DataFrame.to_numpy(pd.read_csv("Perfect Spots r8.00/groundtruth.csv"))
+print('Ground Truth: ',groundtruth[14,0]+24.5)
 
 @jit(nopython=True)
 def triangle(centre,half_base,height,magnif):
@@ -37,16 +40,38 @@ def opt(file,image,magnif):
                 output[i-20*magnif,j-3*magnif,int((k-40000))]=np.sqrt(np.mean(res1**2))
         print(i)
     return output,(np.where(output==np.min(output)))
+@jit(nopython=True)
+def opt2(file,image,magnif):
+    height=66000
+    sample=30
+    output,test=np.zeros(sample),np.random.randint((20*magnif),(40*magnif),sample)
+    for i in range(sample):
+        res1,Y_new,area=res(file,test[i],6*magnif,height,image,magnif)
+        output[i]=np.sqrt(np.mean(res1**2))
+    opt_cen=test[np.argmin(output)]
+    output2=np.zeros((10*magnif-3*magnif))
+    for j in range(3*magnif,10*magnif):
+        res1,Y_new,area=res(file,opt_cen,j,height,image,magnif)
+        output2[j-3*magnif]=np.sqrt(np.mean(res1**2))
+    opt_base=(np.argmin(output2)+3*magnif)
+    test2=np.random.randint((opt_cen-(0.5*magnif)),(opt_cen+(0.5*magnif)),sample)
+    for i in range(sample):
+        res1,Y_new,area=res(file,test2[i],opt_base,height,image,magnif)
+        output[i]=np.sqrt(np.mean(res1**2))
+    opt_cen=test2[np.argmin(output)]
+    return opt_cen,(np.argmin(output2)+3*magnif),height
 
-magnif=4
 #output,min_vals=opt(file,image,magnif)
 #print(min_vals)
 
-centre,half_base,height=96,25,65992
+magnif=6
+values=opt2(file,image,magnif)
+
+centre,half_base,height=values[0],values[1],values[2]
 adj_c=centre/magnif
-print(adj_c)
+print('Estimated Centre: ',adj_c)
 stop=time.perf_counter()
-print(stop-start)
+print('Time Taken: ',stop-start)
 
 tri_x,tri_y=triangle(centre,half_base,height,magnif)
 res,Y_new,area=res(file,centre,half_base,height,image,magnif)
@@ -58,10 +83,9 @@ ax1.plot(Y_new)
 ax1.set_xlim(0,50*magnif)
 ax1.set_ylim(0,65000)
 
-
 x2=np.arange(50*magnif)
-ax2.plot(x2,Y_new)
-ax2.plot(x2,area)
+ax2.bar(x2,Y_new)
+ax2.bar(x2,area,alpha=0.5)
 ax2.bar(x2,res)
 ax2.set_ylim(0,65000)
 ax2.set_xlim(0,50*magnif)
