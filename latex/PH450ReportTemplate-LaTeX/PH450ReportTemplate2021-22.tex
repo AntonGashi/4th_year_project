@@ -151,8 +151,36 @@ Registration No.: \regnumber}
   \subsection{Sub-Pixel Localisation} % (fold)
   \label{sub:spot-finding intro}
   
-  % subsection subsection name (end)
+  Super-resolution microscopy is the process of taking the diffraction limit 
+  of a microscope, ~250nm in the x and y direction, and improving it by a 
+  factor of 2. In the past this has been achieved by ensemble techniques
+  like SIM (Structured Illumination Microscopy) and STED (Stimulated Emission Depletion)
+  \textbf{insert explanation of ensemble techniques}. An improvement on these methods 
+  is single-molecule microscopy, in which whatever is being imaged overcomes the 
+  diffraction limit by being fluorescent. This helps as the fluorescence emits the light 
+  stochastically so only a subset of molecules "light-up" at once, this is important 
+  as if they are separated by at least 200nm then they can be located to nanometre precision. 
+  Since the molecules are now separated spatially you just need to repeat this process temporally
+  until all molecules have been "switched-on", this gives a stack of images with blurry spots
+  which can be located and recombined into a final image with spot-precision on the order of ~20nm.\cite{galbraith2011super}
+  The resolution of a super-resolution image usually doesn't refer to the spot-precision of the 
+  located molecule, rather it refers to the structural resolution, this can be calculated along 
+  with the density of fluorophores as the Nyquist-Shannon sampling theorem states a minimum number 
+  of fluorophores are required to resolve the structure. For example if the resolution is 20nm in 
+  one dimension then fluorophores have to be separated at least 10nm apart at a density of 
+  $~10^4\mu m^{-2}$.\cite{van2011single}\cite{shannon1949communication}
+
   
+  \subsection{reasoning behind my project} % (fold)
+  \label{sub:reasoning behind my project}
+  
+  The main motivation behind my project is to improve the compute time that it
+  takes to render images through sub-pixel localisation whilst keeping an
+  acceptable level of accuracy. That is to say this project should be aiming to
+  produce a method of spot-finding that either less complex, less computations
+  per localisation, fewer steps or a mixture of all.
+
+  \textbf{
   With the almost exponentially increasing launching of small form factor
   satellites such as the CubeSat, arises the challenge of efficiently utilising
   the satellites computing resources. This means any segment of code being ran on
@@ -167,8 +195,8 @@ Registration No.: \regnumber}
   can be compared to the reference is called spot finding, this entails taking
   the image and finding each bright spot or star accurately. The motivation for
   this project is to develop a spot finding method for star tracking and compare
-  it to the state of the art algorithms measuring accuracy, precision and speed.
-  
+  it to the state of the art algorithms measuring accuracy, precision and speed.}
+  \textbf{
   This technique is also used for super-resolution microscopy, which changes the
   optical limits of microscopy from 250nm to about 10nm, this is achieved by
   temporally or spatially spacing the light coming from the specimen being
@@ -178,17 +206,8 @@ Registration No.: \regnumber}
   being excited but they also emit the light stochastically so with a fast enough
   camera the light spots can be independently seen. This also requires a method
   of finding and recombining each spot in each frame to obtain a final sharper
-  image than before.\cite{small2014fluorophore}
+  image than before.\cite{small2014fluorophore}}
   
-  
-  \subsection{reasoning behind my project} % (fold)
-  \label{sub:reasoning behind my project}
-  
-  The main motivation behind my project is to improve the compute time that it
-  takes to render images through sub-pixel localisation whilst keeping an
-  acceptable level of accuracy. That is to say this project should be aiming to
-  produce a method of spot-finding that either less complex, less computations
-  per localisation, fewer steps or a mixture of all.
   
 
 % subsection subsection name (end)
@@ -248,6 +267,8 @@ achieve micro-pixel accuracy.
   
     \subsubsection{Gaussian} % (fold)
     \label{ssub:Gaussian}
+
+
     
     \subsubsection{Triangular method} % (fold)
     \label{ssub:Triangular method}
@@ -358,7 +379,7 @@ achieve micro-pixel accuracy.
     \end{figure}
     
   
-\section{Analysis (probably don't need)} % (fold)
+\section{Analysis (maybe don't need)}
 \label{sec:Analysis}
 
 

@@ -1,10 +1,25 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{rawashdeh2014image}
 Samir~A Rawashdeh and James~E Lumpp.
 \newblock Image-based attitude propagation for small satellites using ransac.
 \newblock {\em IEEE Transactions on Aerospace and Electronic Systems},
   50(3):1864--1875, 2014.
+
+\bibitem{galbraith2011super}
+Catherine~G Galbraith and James~A Galbraith.
+\newblock Super-resolution microscopy at a glance.
+\newblock {\em Journal of cell science}, 124(10):1607--1611, 2011.
+
+\bibitem{van2011single}
+Sebastian van~de Linde, Steve Wolter, and Markus Sauer.
+\newblock Single-molecule photoswitching and localization1.
+\newblock {\em Australian Journal of Chemistry}, 64(5):503--511, 2011.
+
+\bibitem{shannon1949communication}
+Claude~Elwood Shannon.
+\newblock Communication in the presence of noise.
+\newblock {\em Proceedings of the IRE}, 37(1):10--21, 1949.
 
 \bibitem{calitz2015design}
 Nico Calitz.

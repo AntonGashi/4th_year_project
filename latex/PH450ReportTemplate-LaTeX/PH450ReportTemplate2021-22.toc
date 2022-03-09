@@ -9,7 +9,7 @@
 \contentsline {section}{\numberline {I}Introduction}{2}{}
 \contentsline {subsection}{\numberline {A}Sub-Pixel Localisation}{2}{}
 \contentsline {subsection}{\numberline {B}reasoning behind my project}{2}{}
-\contentsline {section}{\numberline {II}State of the field/lit review}{2}{}
+\contentsline {section}{\numberline {II}State of the field/lit review}{3}{}
 \contentsline {section}{\numberline {III}Methods}{3}{}
 \contentsline {subsection}{\numberline {A}Centroiding}{3}{}
 \contentsline {subsection}{\numberline {B}Various fitting methods}{4}{}
@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {V}Results}{4}{}
 \contentsline {subsection}{\numberline {A}Centroiding}{4}{}
 \contentsline {subsection}{\numberline {B}Triangle Fitting}{4}{}
-\contentsline {section}{\numberline {VI}Analysis (probably don't need)}{10}{}
+\contentsline {section}{\numberline {VI}Analysis (maybe don't need)}{10}{}
 \contentsline {section}{\numberline {VII}Discussion}{10}{}
 \contentsline {subsection}{\numberline {A}Results in context of my aims}{10}{}
 \contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{10}{}
