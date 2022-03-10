@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  9 MAR 2022 19:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  10 MAR 2022 18:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -486,85 +486,4 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 <litreview.png, id=30, 837.1275pt x 630.355pt>
 File: litreview.png Graphic file (type png)
 <use litreview.png>
-Package pdftex.def Info: litreview.png  used on input line 258.
-(pdftex.def)             Requested size: 241.84843pt x 182.10573pt.
-LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <12> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 268.
-<project_pics/error_r1.png, id=32, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r1.png Graphic file (type png)
-<use project_pics/error_r1.png>
-Package pdftex.def Info: project_pics/error_r1.png  used on input line 295.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
- [3 <./litreview.png>]
-<project_pics/error_r141.png, id=40, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r141.png Graphic file (type png)
-<use project_pics/error_r141.png>
-Package pdftex.def Info: project_pics/error_r141.png  used on input line 303.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
- [4 <./project_pics/error_r1.png>]
-<project_pics/error_r2.png, id=46, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r2.png Graphic file (type png)
-<use project_pics/error_r2.png>
-Package pdftex.def Info: project_pics/error_r2.png  used on input line 311.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
-<project_pics/error_r283.png, id=47, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r283.png Graphic file (type png)
-<use project_pics/error_r283.png>
-Package pdftex.def Info: project_pics/error_r283.png  used on input line 319.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
- [5 <./project_pics/error_r141.png> <./project_pics/error_r2.png>]
-<project_pics/error_r4.png, id=53, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r4.png Graphic file (type png)
-<use project_pics/error_r4.png>
-Package pdftex.def Info: project_pics/error_r4.png  used on input line 327.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
-<project_pics/error_r566.png, id=54, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r566.png Graphic file (type png)
-<use project_pics/error_r566.png>
-Package pdftex.def Info: project_pics/error_r566.png  used on input line 335.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
- [6 <./project_pics/error_r283.png> <./project_pics/error_r4.png>]
-<project_pics/error_r8.png, id=60, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r8.png Graphic file (type png)
-<use project_pics/error_r8.png>
-Package pdftex.def Info: project_pics/error_r8.png  used on input line 343.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
-<project_pics/error_r2_noise.png, id=61, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r2_noise.png Graphic file (type png)
-<use project_pics/error_r2_noise.png>
-Package pdftex.def Info: project_pics/error_r2_noise.png  used on input line 351.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
- [7 <./project_pics/error_r566.png> <./project_pics/error_r8.png>]
-<project_pics/error_r283_noise.png, id=67, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r283_noise.png Graphic file (type png)
-<use project_pics/error_r283_noise.png>
-Package pdftex.def Info: project_pics/error_r283_noise.png  used on input line 359.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
-<project_pics/error_r566_noise.png, id=68, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r566_noise.png Graphic file (type png)
-<use project_pics/error_r566_noise.png>
-Package pdftex.def Info: project_pics/error_r566_noise.png  used on input line 367.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
- [8 <./project_pics/error_r2_noise.png> <./project_pics/error_r283_noise.png>]
-<project_pics/error_r8_noise.png, id=74, 1376.7435pt x 732.8178pt>
-File: project_pics/error_r8_noise.png Graphic file (type png)
-<use project_pics/error_r8_noise.png>
-Package pdftex.def Info: project_pics/error_r8_noise.png  used on input line 375.
-(pdftex.def)             Requested size: 483.69687pt x 257.46289pt.
- (./PH450ReportTemplate2021-22.bbl [9 <./project_pics/error_r566_noise.png> <./project_pics/error_r8_noise.png>]) [10] (./PH450ReportTemplate2021-22.aux) ) 
-Here is how much of TeX's memory you used:
- 8890 strings out of 478353
- 133481 string characters out of 5854636
- 478412 words of memory out of 5000000
- 26843 multiletter control sequences out of 15000+600000
- 447644 words of font info for 59 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 69i,11n,77p,734b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on PH450ReportTemplate2021-22.pdf (14 pages, 1264319 bytes).
-PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Package pdftex.def Info: litreview.png 

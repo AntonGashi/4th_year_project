@@ -30,7 +30,7 @@ def triangle(centre,halfbase,height):
 def area(tri_in,file):
     grad=(tri_in[1][1]-tri_in[1][0])/(tri_in[0][1]-tri_in[0][0])
     start,stop=math.floor(tri_in[0][0]),math.ceil(tri_in[0][2])
-    area=np.full(file.shape[1],0)#need to impliment a lower bound on the noise
+    area=np.full(file.shape[1],0,dtype=float)#need to impliment a lower bound on the noise
     for i in range(start,stop):
         if i==start:
             height=((i+1)-tri_in[0][0])*grad
@@ -52,9 +52,10 @@ def area(tri_in,file):
 
 
 def res(file_in,area_,tri_in,image):
-    #res=np.sum(file_in[image])-np.sum(area_)
-    res=file_in[image]-area_
-    return np.sum(res**2)
+    res=np.sum(file_in[image])-np.sum(area_)
+    #res=file_in[image]-area_
+    #### write about how changing this helped
+    return res**2
 
 ### dont need test function
 
@@ -101,7 +102,7 @@ def search(file_in,image):
 
 
 def search2(file_in,image):
-    N=10
+    N=5
     first_search=np.zeros((N,N,N))
     first_cen_guess=np.linspace(23, 27,N)
     first_hb_guess=np.linspace(3,8,N)
@@ -130,10 +131,11 @@ def search2(file_in,image):
 #first_cen_guess[result[0]],first_hb_guess[result[1]],first_height_guess[result[2]]
 
 def search3(file_in,image):
+    global sweep_res_array
     N=10
     M=10
     sweep_res_array=np.zeros((N,M))
-    sweep_cen_values=np.linspace(24,26,N)
+    sweep_cen_values=np.linspace(23,27,N)
     sweep_hb_values=np.linspace(0.5,5,M)
     max=7e5
     for i in range(N):
@@ -144,12 +146,23 @@ def search3(file_in,image):
     result=np.where(np.min(sweep_res_array)==sweep_res_array)
     return sweep_cen_values[result[0]]
 
+def search4(file_in,image):
+    N=100
+    center_values=np.linspace(22,28,N)
+    cen_sweep=np.zeros(N)
+    for i in range(N):
+        tri_var=triangle(center_values[i],3,6e5)
+        area_var=area(tri_var,file_in)
+        cen_sweep[i]=res(file_in,area_var,tri_var,image)
+    result=np.where(np.min(cen_sweep)==cen_sweep)
+    return center_values[result]
+
 def full_search(file_in_x,file_in_y):
     array_of_result_x=np.zeros(file_in_x.shape[0])
     array_of_result_y=np.zeros(file_in_y.shape[0])
     for i in range(file_in_x.shape[0]):
-        result_x=search3(file_in_x,i)
-        result_y=search3(file_in_y,i)
+        result_x=search4(file_in_x,i)
+        result_y=search4(file_in_y,i)
         if result_x.shape==1:
             array_of_result_x[i]=result_x
             array_of_result_y[i]=result_y
@@ -216,6 +229,7 @@ ax3.axhline(med_abs,0,100,color='k',linestyle=':',label='Median {}'.format(forma
 ax3.legend()
 
 plt.show()
+## maybe put a min and max hline on the graphs
 ###
 #All for display#
 ###
