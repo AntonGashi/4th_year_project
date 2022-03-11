@@ -1,0 +1,8 @@
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces }}{4}{}
+\contentsline {figure}{\numberline {2}{\ignorespaces }}{4}{}
+\contentsline {figure}{\numberline {3}{\ignorespaces A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}}{5}{}
+\contentsline {figure}{\numberline {4}{\ignorespaces Spot localisation (like graph C in fig \ref {fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}}{6}{}
+\contentsline {figure}{\numberline {5}{\ignorespaces A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}}{6}{}
+\contentsline {figure}{\numberline {6}{\ignorespaces Histograms of the absolute error from each radii}}{7}{}

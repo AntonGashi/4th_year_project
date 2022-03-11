@@ -1,10 +1,4 @@
-\begin{thebibliography}{10}
-
-\bibitem{rawashdeh2014image}
-Samir~A Rawashdeh and James~E Lumpp.
-\newblock Image-based attitude propagation for small satellites using ransac.
-\newblock {\em IEEE Transactions on Aerospace and Electronic Systems},
-  50(3):1864--1875, 2014.
+\begin{thebibliography}{1}
 
 \bibitem{galbraith2011super}
 Catherine~G Galbraith and James~A Galbraith.
@@ -38,21 +32,9 @@ Tjorven Delabie, Joris De~Schutter, and Bart Vandenbussche.
   trackers.
 \newblock {\em The Journal of the Astronautical Sciences}, 61(1):60--84, 2014.
 
-\bibitem{zhai2011micro}
-Chengxing Zhai, Mike Shao, Renaud Goullioud, and Bijan Nemati.
-\newblock Micro-pixel accuracy centroid displacement estimation and detector
-  calibration.
-\newblock {\em Proceedings of the Royal Society A: Mathematical, Physical and
-  Engineering Sciences}, 467(2136):3550--3569, 2011.
-
 \bibitem{stone1989comparison}
 Ronald~C Stone.
 \newblock A comparison of digital centering algorithms.
 \newblock {\em The Astronomical Journal}, 97:1227--1237, 1989.
-
-\bibitem{van2019single}
-Sebastian van~de Linde.
-\newblock Single-molecule localization microscopy analysis with imagej.
-\newblock {\em Journal of Physics D: Applied Physics}, 52(20):203002, 2019.
 
 \end{thebibliography}

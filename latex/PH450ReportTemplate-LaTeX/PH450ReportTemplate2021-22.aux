@@ -15,7 +15,6 @@
 \gdef \tocmax@pagenum{5.87498pt}
 \@writefile{toc}{\tocdepth@munge}
 \@writefile{toc}{\tocdepth@restore}
-\citation{rawashdeh2014image}
 \@writefile{toc}{\contentsline {section}{List of Figures}{1}{}}
 \citation{galbraith2011super}
 \citation{van2011single}
@@ -23,7 +22,6 @@
 \citation{calitz2015design}
 \citation{small2014fluorophore}
 \citation{delabie2014accurate}
-\citation{zhai2011micro}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Sub-Pixel Localisation}{2}{}}
 \newlabel{sub:spot-finding intro}{{I\,A}{2}{}{}{}}
@@ -31,10 +29,7 @@
 \newlabel{sub:Motivation}{{I\,B}{2}{}{}{}}
 \citation{delabie2014accurate}
 \citation{stone1989comparison}
-\citation{van2019single}
-\citation{rawashdeh2014image}
-\bibdata{PH450ReportTemplate2021-22Notes,myreferences}
-\bibcite{rawashdeh2014image}{{1}{}{{}}{{}}}
+\citation{stone1989comparison}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Literature Review}{3}{}}
 \newlabel{sec:lit review}{{II}{3}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Methods}{3}{}}
@@ -42,30 +37,58 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Centroiding}{3}{}}
 \newlabel{sub:Centroiding_meth}{{III\,A}{3}{}{}{}}
 \newlabel{eq1}{{1}{3}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Intensity of real star data (Gienah) showing visually how data is pruned. \cite  {rawashdeh2014image}}}{3}{}}
-\newlabel{fig:1}{{1}{3}{}{}{}}
-\bibcite{galbraith2011super}{{2}{}{{}}{{}}}
-\bibcite{van2011single}{{3}{}{{}}{{}}}
-\bibcite{shannon1949communication}{{4}{}{{}}{{}}}
-\bibcite{calitz2015design}{{5}{}{{}}{{}}}
-\bibcite{small2014fluorophore}{{6}{}{{}}{{}}}
-\bibcite{delabie2014accurate}{{7}{}{{}}{{}}}
-\bibcite{zhai2011micro}{{8}{}{{}}{{}}}
-\bibcite{stone1989comparison}{{9}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Various fitting methods}{4}{}}
-\newlabel{sub:Various fitting methods}{{III\,B}{4}{}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Gaussian}{4}{}}
-\newlabel{ssub:Gaussian}{{III\,B\,1}{4}{}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}Triangular method}{4}{}}
-\newlabel{ssub:Triangular method}{{III\,B\,2}{4}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{4}{}}
-\newlabel{sec:Results}{{IV}{4}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Centroiding}{4}{}}
-\newlabel{sub:Centroiding_results}{{IV\,A}{4}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Triangle Fitting}{4}{}}
-\newlabel{sub:Triangle Fitting}{{IV\,B}{4}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Analysis}{4}{}}
-\newlabel{sec:Analysis}{{V}{4}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Discussion}{4}{}}
-\newlabel{sec:Discussion}{{VI}{4}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Re
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Various fitting methods}{3}{}}
+\newlabel{sub:Various fitting methods}{{III\,B}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Gaussian}{3}{}}
+\newlabel{ssub:Gaussian}{{III\,B\,1}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}Triangular method}{3}{}}
+\newlabel{ssub:Triangular method}{{III\,B\,2}{3}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces }}{4}{}}
+\newlabel{fig:visual_test_2}{{1}{4}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces }}{4}{}}
+\newlabel{fig:visual_test}{{2}{4}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{5}{}}
+\newlabel{sec:Results}{{IV}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Centroiding}{5}{}}
+\newlabel{sub:Centroiding_results}{{IV\,A}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Triangle Fitting}{5}{}}
+\newlabel{sub:Triangle Fitting}{{IV\,B}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}}{5}{}}
+\newlabel{fig:single_test}{{3}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Spot localisation (like graph C in fig \ref  {fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}}{6}{}}
+\newlabel{fig:no_noise_all_r}{{4}{6}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}}{6}{}}
+\newlabel{fig:single_histo}{{5}{6}{}{}{}}
+\bibdata{PH450ReportTemplate2021-22Notes,myreferences}
+\bibcite{galbraith2011super}{{1}{}{{}}{{}}}
+\bibcite{van2011single}{{2}{}{{}}{{}}}
+\bibcite{shannon1949communication}{{3}{}{{}}{{}}}
+\bibcite{calitz2015design}{{4}{}{{}}{{}}}
+\bibcite{small2014fluorophore}{{5}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Histograms of the absolute error from each radii}}{7}{}}
+\newlabel{fig:}{{6}{7}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Analysis}{7}{}}
+\newlabel{sec:Analysis}{{V}{7}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Discussion}{7}{}}
+\newlabel{sec:Discussion}{{VI}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Results in context of my aims}{7}{}}
+\newlabel{sub:Results in context of my aims}{{VI\,A}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{7}{}}
+\newlabel{sub:Results in comparison with other studies/industry standard}{{VI\,B}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{7}{}}
+\newlabel{sub:Explanations for unexpected results}{{VI\,C}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Discuss improvements}{7}{}}
+\newlabel{sub:Discuss improvement}{{VI\,D}{7}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{7}{}}
+\newlabel{sec:Conclusion}{{VII}{7}{}{}{}}
+\bibcite{delabie2014accurate}{{6}{}{{}}{{}}}
+\bibcite{stone1989comparison}{{7}{}{{}}{{}}}
+\bibstyle{unsrt}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\providecommand\totalcount@set[2]{}
+\totalcount@set{figure}{6}
+\totalcount@set{table}{0}
+\newlabel{LastBibItem}{{7}{8}{}{}{}}
+\@writefile{toc}{\contentsline {section}{References}{8}{}}
+\newlabel{LastPage}{{}{8}{}{}{}}
+\gdef \@abspage@last{12}

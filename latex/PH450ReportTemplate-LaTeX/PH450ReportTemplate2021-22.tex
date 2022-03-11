@@ -223,9 +223,7 @@ much since the main algorithm still used is centroiding since it's a very good
 compromise between quickness and accuracy being that it can give an answer in
 the 1-100 microsecond range \cite{delabie2014accurate}. Much of the innovation
 has come from optimising the algorithm or optimising the data going into the
-algorithm, in a 2011 paper by Zhai et al\cite{zhai2011micro} Nyquist sampling
-was used to reconstruct an accurate point spread function(PSF) which helped
-achieve micro-pixel accuracy.
+algorithm.
 
 
 \section{Methods} % (fold)
@@ -247,20 +245,12 @@ achieve micro-pixel accuracy.
       (x_b,y_b) = \left( {\frac{\sum_{ij} I_{ij}x_{ij}}{\sum_{ij} I_{ij}},\frac{\sum_{ij} I_{ij}y_{ij}}{\sum_{ij} I_{ij}}}\right)
   \end{equation}
   
-  A powerful tool for image processing is ImageJ, this is an open source tool
-  that can be used for anything from noise reduction, fourier transforms and
-  finding maxima to analysis such as histograms to visualisations. 
-  Even better because it's open source you can either find plugins or create one.
-  \cite{van2019single}
-  
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=0.5\textwidth]{litreview.png}
-      \end{center}
-      \caption{Intensity of real star data (Gienah) showing visually how data is pruned. \cite{rawashdeh2014image}}
-      \label{fig:1}
-    \end{figure}
-  
+  As can be seen in equation \ref{eq1} the centroiding method is fairly trivial, 
+  the part that determines the computational operations needed is the i and j terms. 
+  These terms are the 'window' of pixels that have been chosen by another rough estimator 
+  to get a generalised position, the window is a square around the estimated position so 
+  the computation scales like $n^2$, where n is the window size.
+  This method \cite{stone1989comparison}
   
   \subsection{Various fitting methods} % (fold)
   \label{sub:Various fitting methods}
@@ -268,10 +258,39 @@ achieve micro-pixel accuracy.
     \subsubsection{Gaussian} % (fold)
     \label{ssub:Gaussian}
 
+
+
     
     \subsubsection{Triangular method} % (fold)
     \label{ssub:Triangular method}
-  
+    
+    The triangle method being used takes inspiration from the Gaussian method, in which,
+    a Gaussian curve is produced and the area is calculated by integrating the function. 
+    After this the position of the spot is estimated by a hyper-parameter optimisation method 
+    which minimises the residual area left over from the fitting process.
+    This triangle method looks to reduce the computational load by removing the integration step, 
+    this can be done as the area of a triangle is just $\frac{1}{2}\ base*height$. 
+    On top of this, the method also sums pixel intensities across axis, firstly it gives a 
+    better signal to noise ratio but also it means the triangle only needs to be rendered in 2 dimensions 
+    instead of 3, further reducing the computational time. 
+
+    \begin{figure}[h]
+      \begin{center}
+        \includegraphics[width=0.7\textwidth]{project_pics/visual_test_2.png}
+      \end{center}
+      \caption{}
+      \label{fig:visual_test_2}
+    \end{figure}
+
+    \begin{figure}[h]
+      \begin{center}
+        \includegraphics[width=0.7\textwidth]{project_pics/visual_test.png}
+      \end{center}
+      \caption{}
+      \label{fig:visual_test}
+    \end{figure}
+    
+    
     
 
 \section{Results} % (fold)
@@ -282,6 +301,42 @@ achieve micro-pixel accuracy.
   
   \subsection{Triangle Fitting} % (fold)
   \label{sub:Triangle Fitting}
+
+  \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=0.7\textwidth]{project_pics/single_test.png}
+      \end{center}
+      \caption{A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}
+      \label{fig:single_test}
+    \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.7\textwidth]{project_pics/no_noise_all_r.png}
+    \end{center}
+    \caption{Spot localisation (like graph C in fig \ref{fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}
+    \label{fig:no_noise_all_r}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.7\textwidth]{project_pics/single_histo.png}
+    \end{center}
+    \caption{A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}
+    \label{fig:single_histo}
+  \end{figure}
+  
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.7\textwidth]{project_pics/histogram_no_noise_all_r.png}
+    \end{center}
+    \caption{Histograms of the absolute error from each radii}
+    \label{fig:}
+  \end{figure}
+
+  
+  
   
       
 \section{Analysis}
@@ -317,94 +372,7 @@ achieve micro-pixel accuracy.
 \bibliography{myreferences}%reads a .bib file called myreferences.bib for the actual references in BibTeX format. You can call your BibTeX file something else if you prefer.
 \addcontentsline{toc}{section}{References}
 %If there are problems with compiling the LaTeX file with BibTeX, make sure that file names don't have spaces in them as this might cause problems
-\begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r1.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r1}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r141.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r141}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r2.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r2}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r283.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r283}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r4.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r4}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r566.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r566}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r8.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r8}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r2_noise.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r2_noise}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r283_noise.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r283_noise}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r566_noise.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r566_noise}
-    \end{figure}
-    
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=1.0\textwidth]{project_pics/error_r8_noise.png}
-      \end{center}
-      \caption{}
-      \label{fig:tri_er_r8_noise}
-    \end{figure}
-    
+
 
 % If there are appendices, these starts from here. Remove from this line until just before \end{document} if you are not using it 
 

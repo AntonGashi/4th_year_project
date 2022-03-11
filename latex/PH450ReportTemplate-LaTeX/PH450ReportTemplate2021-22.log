@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  10 MAR 2022 18:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  11 MAR 2022 18:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -483,7 +483,61 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 \openout5 = `PH450ReportTemplate2021-22.lof'.
 
  [1] [2]
-<litreview.png, id=30, 837.1275pt x 630.355pt>
-File: litreview.png Graphic file (type png)
-<use litreview.png>
-Package pdftex.def Info: litreview.png 
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <12> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 258.
+<project_pics/visual_test_2.png, id=30, 462.528pt x 346.896pt>
+File: project_pics/visual_test_2.png Graphic file (type png)
+<use project_pics/visual_test_2.png>
+Package pdftex.def Info: project_pics/visual_test_2.png  used on input line 279.
+(pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<project_pics/visual_test.png, id=32, 462.528pt x 346.896pt>
+File: project_pics/visual_test.png Graphic file (type png)
+<use project_pics/visual_test.png>
+Package pdftex.def Info: project_pics/visual_test.png  used on input line 287.
+(pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<project_pics/single_test.png, id=33, 462.528pt x 346.896pt>
+File: project_pics/single_test.png Graphic file (type png)
+<use project_pics/single_test.png>
+Package pdftex.def Info: project_pics/single_test.png  used on input line 307.
+(pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
+[3] [4 <./project_pics/visual_test_2.png> <./project_pics/visual_test.png>]
+<project_pics/no_noise_all_r.png, id=47, 462.528pt x 346.896pt>
+File: project_pics/no_noise_all_r.png Graphic file (type png)
+<use project_pics/no_noise_all_r.png>
+Package pdftex.def Info: project_pics/no_noise_all_r.png  used on input line 315.
+(pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
+ [5 <./project_pics/single_test.png>]
+<project_pics/single_histo.png, id=52, 462.528pt x 346.896pt>
+File: project_pics/single_histo.png Graphic file (type png)
+<use project_pics/single_histo.png>
+Package pdftex.def Info: project_pics/single_histo.png  used on input line 323.
+(pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
+<project_pics/histogram_no_noise_all_r.png, id=53, 462.528pt x 346.896pt>
+File: project_pics/histogram_no_noise_all_r.png Graphic file (type png)
+<use project_pics/histogram_no_noise_all_r.png>
+Package pdftex.def Info: project_pics/histogram_no_noise_all_r.png  used on input line 332.
+(pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
+ [6 <./project_pics/no_noise_all_r.png> <./project_pics/single_histo.png>] (./PH450ReportTemplate2021-22.bbl [7 <./project_pics/histogram_no_noise_all_r.png>]) [8] (./PH450ReportTemplate2021-22.aux) ) 
+Here is how much of TeX's memory you used:
+ 8833 strings out of 478353
+ 132064 string characters out of 5854636
+ 478248 words of memory out of 5000000
+ 26792 multiletter control sequences out of 15000+600000
+ 447644 words of font info for 59 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 69i,11n,77p,734b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on PH450ReportTemplate2021-22.pdf (12 pages, 1171866 bytes).
+PDF statistics:
+ 122 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+
