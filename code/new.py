@@ -6,7 +6,9 @@ import math
 from numba import jit,njit
 import time
 from scipy.spatial import distance
-
+import scipy.optimize as spy
+from scipy.stats import norm
+import matplotlib.mlab as mlab
 
 
 
@@ -167,6 +169,9 @@ def full_search(file_in_x,file_in_y):
             array_of_result_y[i]=np.average(result_y)
     return array_of_result_x,array_of_result_y
 
+def gauss(x,avg,var):
+    return 1.0/np.sqrt(2*np.pi*var)*np.exp(-0.5*(x-avg)**2/var) 
+
 ### file variable define ###
 
 
@@ -292,6 +297,8 @@ for i in range(len(groundtruth_r1)):
     abs_error_r8[i]=np.linalg.norm(sub_of_cal_ground_r8[:,i])
 
 
+
+
 x=np.linspace(0,100,100)
 
 fig, ((ax1,ax2,ax3,ax4),(ax5,ax6,ax7,ax8))=plt.subplots(2,4,sharey=True,sharex=False,tight_layout=True)
@@ -303,72 +310,97 @@ print(format(timetaken,".2"))
 fig.supxlabel('Index Of Images')
 fig.supylabel('Absolute Error (pixels)')
 
-ax1.set_title('R1.00')
-ax1.scatter(x,abs_error_r1,marker='x')
+
+#ax1.scatter(x,abs_error_r1,marker='x')
 avg_abs=np.average(abs_error_r1)
 med_abs=np.median(abs_error_r1)
-#ax1.hist(abs_error_r1,30)
-#ax1.vlines(avg_abs,0,8,color='r',label='Average')
-ax1.axhline(avg_abs,100,color='r',linestyle=':',label='Average')
-ax1.axhline(med_abs,0,100,color='k',linestyle=':',label='Median')
+var_abs=np.var(abs_error_r1)
+hist,bins,patches=ax1.hist(abs_error_r1,30)
+pdf_y=gauss(bins,avg_abs,var_abs)
+ax1.plot(bins,pdf_y,label='Fitted Gaussian')
+ax1.vlines(avg_abs,0,8,color='r',label='Average')
+#ax1.axhline(avg_abs,100,color='r',linestyle=':',label='Average')
+#ax1.axhline(med_abs,0,100,color='k',linestyle=':',label='Median')
+ax1.set_title('R1.00')
+print(avg_abs,var_abs)
 
 ax2.set_title('R1.41')
-ax2.scatter(x,abs_error_r141,marker='x')
+#ax2.scatter(x,abs_error_r141,marker='x')
 avg_abs=np.average(abs_error_r141)
 med_abs=np.median(abs_error_r141)
-#ax2.hist(abs_error_r141,30)
-#ax2.vlines(avg_abs,0,8,color='r')
-ax2.axhline(avg_abs,0,100,color='r',linestyle=':')
-ax2.axhline(med_abs,0,100,color='k',linestyle=':')
+var_abs=np.var(abs_error_r141)
+hist,bins,patches=ax2.hist(abs_error_r141,30)
+pdf_y=gauss(bins,avg_abs,var_abs)
+ax2.plot(bins,pdf_y)
+ax2.vlines(avg_abs,0,8,color='r')
+#ax2.axhline(avg_abs,0,100,color='r',linestyle=':')
+#ax2.axhline(med_abs,0,100,color='k',linestyle=':')
 
 ax3.set_title('R2.00')
-ax3.scatter(x,abs_error_r2,marker='x')
+#ax3.scatter(x,abs_error_r2,marker='x')
 avg_abs=np.average(abs_error_r2)
 med_abs=np.median(abs_error_r2)
-#ax3.hist(abs_error_r2,30)
-#ax3.vlines(avg_abs,0,8,color='r')
-ax3.axhline(avg_abs,0,100,color='r',linestyle=':')
-ax3.axhline(med_abs,0,100,color='k',linestyle=':')
+var_abs=np.var(abs_error_r2)
+hist,bins,patches=ax3.hist(abs_error_r2,30)
+pdf_y=gauss(bins,avg_abs,var_abs)
+ax3.plot(bins,pdf_y)
+ax3.vlines(avg_abs,0,8,color='r')
+#ax3.axhline(avg_abs,0,100,color='r',linestyle=':')
+#ax3.axhline(med_abs,0,100,color='k',linestyle=':')
 
 ax4.set_title('R2.38')
-ax4.scatter(x,abs_error_r283,marker='x')
+#ax4.scatter(x,abs_error_r283,marker='x')
 aavg_abs=np.average(abs_error_r283)
 med_abs=np.median(abs_error_r283)
-#ax4.hist(abs_error_r283,30)
-#ax4.vlines(avg_abs,0,8,color='r')
-ax4.axhline(avg_abs,0,100,color='r',linestyle=':')
-ax4.axhline(med_abs,0,100,color='k',linestyle=':')
+var_abs=np.var(abs_error_r283)
+hist,bins,patches=ax4.hist(abs_error_r283,30)
+pdf_y=gauss(bins,avg_abs,var_abs)
+ax4.plot(bins,pdf_y)
+ax4.vlines(avg_abs,0,8,color='r')
+#ax4.axhline(avg_abs,0,100,color='r',linestyle=':')
+#ax4.axhline(med_abs,0,100,color='k',linestyle=':')
 
 ax5.set_title('R4.00')
-ax5.scatter(x,abs_error_r4,marker='x')
+#ax5.scatter(x,abs_error_r4,marker='x')
 avg_abs=np.average(abs_error_r4)
 med_abs=np.median(abs_error_r4)
-#ax5.hist(abs_error_r4,30)
-#ax5.vlines(avg_abs,0,8,color='r')
-ax5.axhline(avg_abs,0,100,color='r',linestyle=':')
-ax5.axhline(med_abs,0,100,color='k',linestyle=':')
+var_abs=np.var(abs_error_r4)
+hist,bins,patches=ax5.hist(abs_error_r4,30)
+pdf_y=gauss(bins,avg_abs,var_abs)
+ax5.plot(bins,pdf_y)
+ax5.vlines(avg_abs,0,8,color='r')
+#ax5.axhline(avg_abs,0,100,color='r',linestyle=':')
+#ax5.axhline(med_abs,0,100,color='k',linestyle=':')
 
 ax6.set_title('R5.66')
-ax6.scatter(x,abs_error_r566,marker='x')
+#ax6.scatter(x,abs_error_r566,marker='x')
 avg_abs=np.average(abs_error_r566)
 med_abs=np.median(abs_error_r566)
-#ax6.hist(abs_error_r566,30)
-#ax6.vlines(avg_abs,0,8,color='r')
-ax6.axhline(avg_abs,0,100,color='r',linestyle=':')
-ax6.axhline(med_abs,0,100,color='k',linestyle=':')
+var_abs=np.var(abs_error_r566)
+hist,bins,patches=ax6.hist(abs_error_r566,30)
+pdf_y=gauss(bins,avg_abs,var_abs)
+ax6.plot(bins,pdf_y)
+ax6.vlines(avg_abs,0,8,color='r')
+#ax6.axhline(avg_abs,0,100,color='r',linestyle=':')
+#ax6.axhline(med_abs,0,100,color='k',linestyle=':')
 
 ax7.set_title('R8.00')
-ax7.scatter(x,abs_error_r8,marker='x')
+#ax7.scatter(x,abs_error_r8,marker='x')
 avg_abs=np.average(abs_error_r8)
 med_abs=np.median(abs_error_r8)
-#ax7.hist(abs_error_r8,30)
-#ax7.vlines(avg_abs,0,8,color='r')
-ax7.axhline(avg_abs,0,100,color='r',linestyle=':')
-ax7.axhline(med_abs,0,100,color='k',linestyle=':')
+var_abs=np.var(abs_error_r8)
+hist,bins,patches=ax7.hist(abs_error_r8,30)
+pdf_y=gauss(bins,avg_abs,var_abs)
+ax7.plot(bins,pdf_y)
+ax7.vlines(avg_abs,0,8,color='r')
+#ax7.axhline(avg_abs,0,100,color='r',linestyle=':')
+#ax7.axhline(med_abs,0,100,color='k',linestyle=':')
+print(avg_abs,var_abs)
+
 plt.delaxes(ax8)
 fig.legend(loc='lower right')
 plt.tight_layout()
-plt.show()
+plt.savefig('distro.png',dpi=400)
 ## maybe put a min and max hline on the graphs
 ###
 #All for display#

@@ -15,16 +15,17 @@ Claude~Elwood Shannon.
 \newblock Communication in the presence of noise.
 \newblock {\em Proceedings of the IRE}, 37(1):10--21, 1949.
 
+\bibitem{6638050}
+Juan Castorena and Charles~D. Creusere.
+\newblock Sub-spot localization for spatial super-resolved lidar.
+\newblock In {\em 2013 IEEE International Conference on Acoustics, Speech and
+  Signal Processing}, pages 2227--2231, 2013.
+
 \bibitem{calitz2015design}
 Nico Calitz.
 \newblock {\em The design and implementation of a stellar gyroscope for
   accurate angular rate estimation on CubeSats}.
 \newblock PhD thesis, Stellenbosch: Stellenbosch University, 2015.
-
-\bibitem{small2014fluorophore}
-Alex Small and Shane Stahlheber.
-\newblock Fluorophore localization algorithms for super-resolution microscopy.
-\newblock {\em Nature methods}, 11(3):267--279, 2014.
 
 \bibitem{delabie2014accurate}
 Tjorven Delabie, Joris De~Schutter, and Bart Vandenbussche.
@@ -36,5 +37,17 @@ Tjorven Delabie, Joris De~Schutter, and Bart Vandenbussche.
 Ronald~C Stone.
 \newblock A comparison of digital centering algorithms.
 \newblock {\em The Astronomical Journal}, 97:1227--1237, 1989.
+
+\bibitem{richards1959electromagnetic}
+Bernard Richards and Emil Wolf.
+\newblock Electromagnetic diffraction in optical systems, ii. structure of the
+  image field in an aplanatic system.
+\newblock {\em Proceedings of the Royal Society of London. Series A.
+  Mathematical and Physical Sciences}, 253(1274):358--379, 1959.
+
+\bibitem{small2014fluorophore}
+Alex Small and Shane Stahlheber.
+\newblock Fluorophore localization algorithms for super-resolution microscopy.
+\newblock {\em Nature methods}, 11(3):267--279, 2014.
 
 \end{thebibliography}

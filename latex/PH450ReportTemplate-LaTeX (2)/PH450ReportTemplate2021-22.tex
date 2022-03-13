@@ -1,0 +1,277 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template prepared by Dr Daniel Oi, CC BY-NC 4.0          %
+%%%%%%%%%%%%%%%%Do Not Alter The Preamble%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%% Preamble Starts Here %%%%%%%%%%%%%%%%%%%%%%%
+%
+\documentclass[aps,pra,a4paper,nofootinbib,onecolumn,tightenlines,longbibliography,12pt,amsfonts,amssymb,amsmath,floatfix]{revtex4-2} % Uses the APS RevTeX document class. Versions earlier than 4-2e may not be compatible with the latest LaTeX kernel.
+\usepackage{latexsym,graphicx,color,geometry}
+\geometry{a4paper, portrait, hmargin=2cm, vmargin={2cm, 2.5cm}}%Defines the page size and margins
+\usepackage{url}%Fixes URLs in bibliography
+\usepackage{enumitem}%Numbering in Lists
+\usepackage[english]{isodate,babel}
+\usepackage[figure,table]{totalcount} % counts tables and figures
+\usepackage{blindtext} % used to make some example junk text
+\usepackage{physics} % very useful for typesetting physics equations
+
+\def\bibsection{\section*{\refname}} %Sorts out reference section and gets rid of horizontal line
+\bibliographystyle{acm}
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries\itshape}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+
+%%%%Font Definition%%%%
+% the document is to be sans serif
+\usepackage[T1]{fontenc}
+%\usepackage[cmbright]{sfmath}
+\usepackage{lmodern}
+\renewcommand{\rmdefault}{lmss}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\mathbf}[1]{\ensuremath\textbf{\textit{\textsf{#1}}}}
+
+%%%%%%%%%%%%%%%%%%% Preamble Ends Here %%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Insert any other extra packages or definitions you want here%
+
+
+%                                                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%% Fill in your details in the part below %%%%%%%%%
+\newcommand{\projecttitle}{\textcolor{red}{This is a Project Title}}% Change title and remove red text color
+\newcommand{\studentname}{\textcolor{red}{Insert Student Name Here}}% Type in your name here, but without the red highlighting, same for all other uses of red text
+\newcommand{\regnumber}{\textcolor{red}{XXXXXXXXXXXX}}
+\newcommand{\degree}{\textcolor{red}{MPhys, MPhys Physics with Advanced Research, BSc (Hons),  BSc (Hons) Maths \& Physics, BSc (Hons) Physics with Teaching, etc... [Set as appropriate]}}
+\newcommand{\primarysup}{\textcolor{red}{Prof~A~Smith}}
+\newcommand{\secondsup}{\textcolor{red}{Dr~B~Jones}}%Comment out this line if not needed
+\newcommand{\thirdsup}{\textcolor{red}{Dr~C~Bloggs}}%Comment out this line if not needed
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%% Do Not Alter this part %%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\footskip = 45pt
+\fancyhf{}
+\lhead{\projecttitle} 
+\lfoot{PH450 Report 2021-22}
+\cfoot{Student: \regnumber}
+\rfoot{Page \thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%The document starts here%%%%%%
+\begin{document}
+
+%%This section creates the cover page%%
+
+\begin{figure}
+\includegraphics[width=\textwidth]{ScienceLogo.png}
+\end{figure}
+
+\title{PH450 Report 2021-22\\ \vspace{1cm}
+{\huge \projecttitle}\\[0.5cm] %If your title is too long, use \LARGE, \Large, or large instead of \huge
+{\footnotesize Submitted in partial fulfilment for the degree of \degree}}
+
+\author{\studentname\\
+Registration No.: \regnumber}
+\affiliation{SUPA Department of Physics, University of Strathclyde, Glasgow G4 0NG, United Kingdom}
+
+\author{\primarysup{} (Primary Supervisor)}
+\noaffiliation
+\ifdefined\secondsup % this only appears if \secondsup is set above
+\author{\secondsup, (Secondary Supervisor)} % 
+\noaffiliation
+\fi
+\ifdefined\thirdsup
+\author{\thirdsup, (Secondary Supervisor)} % 
+\noaffiliation
+\fi
+
+\date{\today}
+
+\pagenumbering{gobble} % first page in document is not numbered
+
+\maketitle
+%%This ends the title page section%%
+
+\newpage % Creates a new page
+
+\pagenumbering{roman} % Use Roman numerals for the front matter pages
+
+\section*{Abstract} %The * suppresses a section number
+\addcontentsline{toc}{section}{Abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes: Change text in red as appropriate to your report.  %
+% Remove the "\textcolor{red}{}" parts so that final output %
+% text is black.                                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	[\textcolor{red}{\textbf{RED text is just for highlighting useful information throughout this template. In the final version, text should be \textcolor{black}{BLACK}}, this can be done by removing the ``textcolor'' command where it appears in the LaTeX source.}]
+	
+	[\textcolor{red}{In the Abstract, concisely summarise the contents of this report in a few sentences. Indicate what research problem was be addressed, the methods used, and the main findings and results. Should be easily understood by intended audience, i.e. other PH450 students.}]
+	
+	[\textcolor{red}{GENERAL INSTRUCTIONS: You should aim for a report length of \textbf{30 pages}, not including front matter, bibliography, or appendices. This is not a mandatory length, and variations of around 10\% is to be expected. However, considerably longer or shorter reports may not show either sufficient conciseness or detail respectively. It is up to the discretion of the examination committee to determine how effective the report has been to summarise for the non-expert the work performed in the project, present its results, and discuss its significance. Appendices may be included but examiners are not expected to read them, hence the main text of the report (included in the 30 pages) should be largely self-contained without requiring reading the appendices to easily follow.}]
+
+\newpage
+\section*{Preface \textcolor{red}{(Optional)}}
+\addcontentsline{toc}{section}{Preface}
+
+\textcolor{red}{[You may want to provide context to the report.]}
+
+\newpage
+\section*{Acknowledgements \textcolor{red}{(Optional)}}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+\textcolor{red}{[You may want to acknowledge people who have helped you in your project.]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Do not alter this section %
+\newpage
+\tableofcontents % Creates a Table of Contents
+\makeatletter
+\let\toc@pre\relax
+\let\toc@post\relax
+\makeatother
+
+\ifnum\totalfigures>0
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+\fi
+
+\ifnum\totaltables>0
+\newpage
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+\fi
+
+
+% Can edit after here       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%% Main Report Starts Here %%%%%
+
+\newpage
+\pagenumbering{arabic}
+
+\section{\textcolor{red}{[Introduction Section]}}
+
+\textcolor{red}{[The introduction is where you should outline your project and your report. You should provide motivation and general background to the topic.\footnote{This is a footnote.}]}
+
+\subsection{\textcolor{red}{This is a subsection}}
+
+\textcolor{red}{You can cite references like Ref.~\cite{knuthwebsite}, Ref.~\cite{einstein},  Refs.~\cite{einstein,latexcompanion}, or like Refs.~\cite{einstein,latexcompanion,knuthwebsite,Senn:2009}.}
+
+\subsubsection{\textcolor{red}{This is Sub-subsection}}
+\label{sec:subssubsectionref} % This is how you create a section label that can you refer to in the text elsewhere.
+
+\textcolor{red}{You can insert figures by using the appropriate {\LaTeX} commands. You can reference figures, e.g. Fig.~\ref{fig:example1}, by calling their labels. You can refer to specific sections of your report like Sec.~\ref{sec:subssubsectionref}.}
+
+\begin{figure}[b] % I would like this at the bottom of the page if possible
+\includegraphics[width=0.4\textwidth]{example.png}
+\caption[\textcolor{red}{Short Caption for List of Figures}]{%
+\label{fig:example1} % This creates a figure label for cross-referencing in the text, the name is not important, but is a good idea to use something sensible and unique
+\textcolor{red}{[This is a caption. Use captions effectively to provide details about the figure. Include information such as parameters, assumptions, models used, sample preparations, etc. Make sure figures are a good size and remember to reference them in the text.]}}
+\end{figure}
+
+\textcolor{red}{Add equations like,}
+\begin{equation} \color{red}
+\Delta T = \int_{t=0}^\infty f(s) \exp{-i \frac{\hbar}{2\pi}\hat{K}} \mathrm{d}s,
+\label{eq:example1} % This creates an equation label for cross-referencing in the text
+\end{equation}
+\textcolor{red}{and reference them like this: Eq.~\eqref{eq:example1}, the eqref puts the brackets around it.}
+
+\newpage
+\section{\textcolor{red}{[Next Section]}}
+
+\textcolor{red}{You should logically partition your report to provide sufficient material for a non-expert reader to follow the work presented and understand its context. This may include Background, Literature Review, Theory, Methods, Results, Analysis, Discussion, and Conclusions. As each project is different, there is no mandatory set of Section Headers, but it will up to the discretion of the examination committee to evaluate how effectively you have conveyed your project work to the intended audience.}
+
+\textcolor{red}{Add additional sections as appropriate. Use sub-sections or sub-sub-section to logically and hierarchically lay out the report into digestible segments.}
+
+\blindtext
+
+In nisi sem, bibendum ac vulputate vel, dictum vel lectus. Morbi tempor ex a nibh tincidunt, eu elementum lorem auctor. Nam facilisis dignissim urna id ultricies. Morbi scelerisque ipsum sit amet tempus imperdiet. Aenean tempor eget tortor at iaculis. Pellentesque vel libero feugiat, aliquet elit eu, hendrerit justo. In hac habitasse platea dictumst. Etiam a diam sem. Vestibulum dui felis, ultrices quis libero a, vehicula hendrerit lectus. Proin aliquam turpis sem, et bibendum tortor varius a. Aenean facilisis magna at velit ornare condimentum. Fusce vel magna augue. Donec quis enim ac orci lobortis porttitor. Fusce porta porta ligula, at bibendum magna posuere vitae. Quisque semper sit amet augue sed facilisis.
+
+\newpage
+\section{\textcolor{red}{[Another Section]}}
+
+\textcolor{red}{Make effectively use of figures and tables to convey your work. Provide sufficient detail in each caption to easily comprehend what is being presented without requiring referring to the text. This may include parameters, settings,  or background detail specific to what is being shown.}
+
+\begin{table}[h] % request this is put at the top of the page if possible
+\begin{center}
+ \begin{tabular}{||c | c c c||} 
+ \hline
+ Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+ \hline\hline
+ 1 & 6 & 87837 & 787 \\ 
+ \hline
+ 2 & 7 & 78 & 5415 \\
+ \hline
+ 3 & 545 & 778 & 7507 \\
+ \hline
+ 4 & 545 & 18744 & 7560 \\
+ \hline
+ 5 & 88 & 788 & 6344\\
+ \hline
+\end{tabular}
+\end{center}
+\caption[\textcolor{red}{Short Table Caption}]{%
+\label{table:example1} % This creates a table label for cross-referencing in the text
+\textcolor{red}{This is a table caption}}
+\end{table}
+
+\begin{figure}[b]
+\includegraphics[width=0.5\textwidth]{example.png}
+\caption[\textcolor{red}{Another Short Caption}]{\label{fig:example2} \textcolor{red}{This is another caption.}}
+\end{figure}
+
+\textcolor{red}{Remember to reference all figures (see Fig.~\ref{fig:example2}) and tables, such as Table~\ref{table:example1}, in the main text.}
+
+\blindtext[3] % this is just to make some text here, remove it if you have actual content in this section
+
+\newpage
+\section{\textcolor{red}{[Discussion and Conclusion]}}
+
+\textcolor{red}{The project report should not only describe what as done, but also as importantly discuss and explain your results. A good report is not just descriptive but also demonstrates understanding.}
+
+\Blindtext % more 'fake' text
+
+\blindtext[5]
+
+\newpage
+
+% The Bibliography appears here. Create a .bib file in BibTeX format, example here is ``myreferences.bib'', to keep track on the references. Use \cite{RefID} to insert a reference.
+
+\bibliographystyle{unsrt}
+\bibliography{myreferences}%reads a .bib file called myreferences.bib for the actual references in BibTeX format. You can call your BibTeX file something else if you prefer.
+\addcontentsline{toc}{section}{References}
+%If there are problems with compiling the LaTeX file with BibTeX, make sure that file names don't have spaces in them as this might cause problems
+
+% If there are appendices, these starts from here. Remove from this line until just before \end{document} if you are not using it 
+\appendix 
+
+\newpage
+\section{Appendix: \textcolor{red}{First Appendix (Optional)}}
+
+\textcolor{red}{Appendices should be used sparingly. They are to provide additional detail that would otherwise disrupt the flow of the main text. The reader should be able to understand, at least at a high level, the work you are presenting without needing to read the appendices. For large amounts of data or code, a repository should be used and referenced instead.}
+
+\newpage
+\section{Appendix: \textcolor{red}{Second Appendix (Optional)}}
+
+
+
+% end of appendix section
+
+\end{document}
+
+Any thing after here is ignored.

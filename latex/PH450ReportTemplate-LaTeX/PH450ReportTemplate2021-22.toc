@@ -5,24 +5,26 @@
 \contentsline {section}{Acknowledgements}{ii}{}
 \tocdepth@munge 
 \tocdepth@restore 
-\contentsline {section}{List of Figures}{1}{}
+\contentsline {section}{List of Figures}{iv}{}
+\contentsline {section}{List of Tables}{1}{}
 \contentsline {section}{\numberline {I}Introduction}{2}{}
 \contentsline {subsection}{\numberline {A}Sub-Pixel Localisation}{2}{}
 \contentsline {subsection}{\numberline {B}Motivation}{2}{}
 \contentsline {section}{\numberline {II}Literature Review}{3}{}
 \contentsline {section}{\numberline {III}Methods}{3}{}
 \contentsline {subsection}{\numberline {A}Centroiding}{3}{}
-\contentsline {subsection}{\numberline {B}Various fitting methods}{3}{}
-\contentsline {subsubsection}{\numberline {1}Gaussian}{3}{}
-\contentsline {subsubsection}{\numberline {2}Triangular method}{3}{}
-\contentsline {section}{\numberline {IV}Results}{5}{}
-\contentsline {subsection}{\numberline {A}Centroiding}{5}{}
-\contentsline {subsection}{\numberline {B}Triangle Fitting}{5}{}
-\contentsline {section}{\numberline {V}Analysis}{7}{}
-\contentsline {section}{\numberline {VI}Discussion}{7}{}
-\contentsline {subsection}{\numberline {A}Results in context of my aims}{7}{}
-\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{7}{}
-\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{7}{}
-\contentsline {subsection}{\numberline {D}Discuss improvements}{7}{}
-\contentsline {section}{\numberline {VII}Conclusion}{7}{}
-\contentsline {section}{References}{8}{}
+\contentsline {subsection}{\numberline {B}Fitting methods}{3}{}
+\contentsline {subsubsection}{\numberline {1}Point Spread Function}{3}{}
+\contentsline {subsubsection}{\numberline {2}Gaussian}{3}{}
+\contentsline {subsubsection}{\numberline {3}Triangular method}{4}{}
+\contentsline {section}{\numberline {IV}Results}{6}{}
+\contentsline {subsection}{\numberline {A}Centroiding}{6}{}
+\contentsline {subsection}{\numberline {B}Triangle Fitting}{6}{}
+\contentsline {section}{\numberline {V}Analysis}{8}{}
+\contentsline {section}{\numberline {VI}Discussion}{9}{}
+\contentsline {subsection}{\numberline {A}Results in context of my aims}{9}{}
+\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{9}{}
+\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{9}{}
+\contentsline {subsection}{\numberline {D}Discuss improvements}{9}{}
+\contentsline {section}{\numberline {VII}Conclusion}{9}{}
+\contentsline {section}{References}{9}{}

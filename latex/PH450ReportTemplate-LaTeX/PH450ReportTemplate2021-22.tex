@@ -156,8 +156,11 @@ Registration No.: \regnumber}
   factor of 2. In the past this has been achieved by ensemble techniques
   like SIM (Structured Illumination Microscopy) and STED (Stimulated Emission Depletion)
   \textbf{insert explanation of ensemble techniques}. An improvement on these methods 
-  is single-molecule microscopy, in which whatever is being imaged overcomes the 
-  diffraction limit by being fluorescent. This helps as the fluorescence emits the light 
+  is single-molecule microscopy, in which molecules being imaged overcomes the 
+  diffraction limit by being fluorescent. There are two ways of doing this photo-activated localization
+  microscopy(PALM) and stochastic optical reconstruction microscopy(STORM), both
+  rely on fluorophores which are fluorescent chemicals that re-emit light after
+  being excited. This helps as the fluorescence emits the light 
   stochastically so only a subset of molecules "light-up" at once, this is important 
   as if they are separated by at least 200nm then they can be located to nanometre precision. 
   Since the molecules are now separated spatially you just need to repeat this process temporally
@@ -178,9 +181,18 @@ Registration No.: \regnumber}
   takes to render images through sub-pixel localisation whilst keeping an
   acceptable level of accuracy. That is to say this project should be aiming to
   produce a method of spot-finding that either less complex, less computations
-  per localisation, fewer steps or a mixture of all.
+  per localisation, fewer steps or a mixture of all. 
 
-  \textbf{
+  This doesn't just have applications in localisation microscopy but also 
+  can be used in other technologies, for example a paper published in the IEEE
+  has the problem of needing a fast super-resolution technique to get higher 
+  spatial resolution from their LIDAR system. This system is constrained by the 
+  laser spot size and precision of the scanning mechanical unit as the single laser 
+  source with sampling rates in the GHz range which achieves high accuracy for depth 
+  and range resolution but poor spatial resolution. A consideration was to decrease the 
+  diameter of the laser thus increasing the spatial sampling density, although this 
+  was deemed too computationally expensive.\cite{6638050}
+  
   With the almost exponentially increasing launching of small form factor
   satellites such as the CubeSat, arises the challenge of efficiently utilising
   the satellites computing resources. This means any segment of code being ran on
@@ -195,18 +207,14 @@ Registration No.: \regnumber}
   can be compared to the reference is called spot finding, this entails taking
   the image and finding each bright spot or star accurately. The motivation for
   this project is to develop a spot finding method for star tracking and compare
-  it to the state of the art algorithms measuring accuracy, precision and speed.}
-  \textbf{
+  it to the state of the art algorithms measuring accuracy, precision and speed.
+
   This technique is also used for super-resolution microscopy, which changes the
   optical limits of microscopy from 250nm to about 10nm, this is achieved by
   temporally or spatially spacing the light coming from the specimen being
-  imaged. There are two ways of doing this photo-activated localization
-  microscopy(PALM) and stochastic optical reconstruction microscopy(STORM), both
-  rely on fluorophores which are fluorescent chemicals that re-emit light after
-  being excited but they also emit the light stochastically so with a fast enough
-  camera the light spots can be independently seen. This also requires a method
-  of finding and recombining each spot in each frame to obtain a final sharper
-  image than before.\cite{small2014fluorophore}}
+  imaged. 
+
+  \textbf{still need to add more technologies that use spot localisation}
   
   
 
@@ -223,7 +231,7 @@ much since the main algorithm still used is centroiding since it's a very good
 compromise between quickness and accuracy being that it can give an answer in
 the 1-100 microsecond range \cite{delabie2014accurate}. Much of the innovation
 has come from optimising the algorithm or optimising the data going into the
-algorithm.
+algorithm. 
 
 
 \section{Methods} % (fold)
@@ -249,16 +257,37 @@ algorithm.
   the part that determines the computational operations needed is the i and j terms. 
   These terms are the 'window' of pixels that have been chosen by another rough estimator 
   to get a generalised position, the window is a square around the estimated position so 
-  the computation scales like $n^2$, where n is the window size.
-  This method \cite{stone1989comparison}
+  the computation scales like $n^2$, where n is the window size.\cite{stone1989comparison}
   
-  \subsection{Various fitting methods} % (fold)
+  \subsection{Fitting methods} % (fold)
   \label{sub:Various fitting methods}
-  
+
+  \subsubsection{Point Spread Function} % (fold)
+    \label{ssub:Point Spread Function}
+    
+    Point Spread Functions(PSF) is the way an object blurs due to the imaging of a point 
+    source of light, it's the reason the diffraction limit of a microscope is 250nm (in the
+    x,y direction) and >450-700nm (in the z direction). The PSF is also the smallest resolvable
+    detail that can be seen with light as other objects that emit light that are smaller than 
+    one another all appear to be the same size. Provided that laboratory equipment is set up correctly, 
+    i.e. the lens is corrected for aberrations and constants are known such as aperture and angels 
+    between lens and samples, methods like the Richards-Wolf model and Gibson-Lanni model will calculate
+    the centre of a spot near perfectly. The problem with these methods is that they are complicated and 
+    slow, and also offer an answer that is unnecessarily accurate. \cite{richards1959electromagnetic}\cite{galbraith2011super}\cite{small2014fluorophore}
+
+
+    % subsubsection Point Spread Function (end)
     \subsubsection{Gaussian} % (fold)
     \label{ssub:Gaussian}
 
+    Where the exact prediction of section (\ref{ssub:Point Spread Function}) fails Gaussian fitting tries to succeed 
+    by presuming that, if all equipment is set up correctly, the centre of a PSF of a point source is 
+    always going to be in the centre. Thus for 2-D spot finding that can't afford the computational time of 
+    the previous method uses the more simple equation:
 
+    $$I(x,y)=I_0*exp(-a*k^2((x-x_0)^2+(y-y_0)^2))+b$$
+
+    Where k is $\frac{2\pi}{\lambda}$, $a$ is the width of the PSF, $I_0$ is the peak intensity and b is the average background per pixel. \cite{small2014fluorophore}
 
     
     \subsubsection{Triangular method} % (fold)
@@ -274,20 +303,32 @@ algorithm.
     better signal to noise ratio but also it means the triangle only needs to be rendered in 2 dimensions 
     instead of 3, further reducing the computational time. 
 
-    \begin{figure}[h]
+    \begin{figure}[H]
       \begin{center}
-        \includegraphics[width=0.7\textwidth]{project_pics/visual_test_2.png}
+        \includegraphics[width=0.6\textwidth]{project_pics/visual_test_2.png}
       \end{center}
-      \caption{}
+      \caption{Graph of ideal spot data}
       \label{fig:visual_test_2}
     \end{figure}
 
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=0.6\textwidth]{project_pics/visual_test.png}
+      \end{center}
+      \caption{Graph of data from figure \ref{fig:visual_test_2} with the calculated area and residual}
+      \label{fig:visual_test}
+    \end{figure}
+    
+    As can be seen in figure \ref{fig:visual_test} the area of the simulated spot are subtracted from 
+    the area under the triangle and a residual is left over, this residual parameter is the 
+    variable to be minimised for in the optimisation routine.
+
     \begin{figure}[h]
       \begin{center}
-        \includegraphics[width=0.7\textwidth]{project_pics/visual_test.png}
+        \includegraphics[width=0.2\textwidth]{project_pics/flowchart.png}
       \end{center}
-      \caption{}
-      \label{fig:visual_test}
+      \caption{Flowchart describing how the code for the methods works}
+      \label{fig:flowchart}
     \end{figure}
     
     
@@ -302,22 +343,30 @@ algorithm.
   \subsection{Triangle Fitting} % (fold)
   \label{sub:Triangle Fitting}
 
+  In figure \ref{fig:single_test} it can be seen that while using simulated data the mean accuracy of the 
+  localisation is ~0.4 of a pixel whilst being executed in ~0.34s.
+
   \begin{figure}[H]
       \begin{center}
         \includegraphics[width=0.7\textwidth]{project_pics/single_test.png}
       \end{center}
-      \caption{A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}
+      \caption{Simulated spots with R1.00, A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}
       \label{fig:single_test}
     \end{figure}
+
+
+    Part C of figure \ref{fig:single_test} has been replicated for all simulated spots given in figure \ref{fig:no_noise_all_r}
+    to compare how the change in spot size changes accuracy.
 
   \begin{figure}[H]
     \begin{center}
       \includegraphics[width=0.7\textwidth]{project_pics/no_noise_all_r.png}
     \end{center}
-    \caption{Spot localisation (like graph C in fig \ref{fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}
+    \caption{Spot localisation (like graph C in figure \ref{fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}
     \label{fig:no_noise_all_r}
   \end{figure}
-
+  
+  
   \begin{figure}[H]
     \begin{center}
       \includegraphics[width=0.7\textwidth]{project_pics/single_histo.png}
@@ -329,19 +378,48 @@ algorithm.
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.7\textwidth]{project_pics/histogram_no_noise_all_r.png}
+      \includegraphics[width=0.7\textwidth]{project_pics/distro.png}
     \end{center}
     \caption{Histograms of the absolute error from each radii}
-    \label{fig:}
+    \label{fig:distro}
   \end{figure}
 
-  
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{||c || c c||} 
+ \hline
+ Radii & Average & Variance \\ [0.5ex] 
+ \hline\hline
+ 1.00 &  0.3850& 0.0177 \\ 
+ \hline  
+ 1.41 &  0.3850& 0.0177  \\
+ \hline 
+ 2.00 &  0.3850& 0.0177 \\
+ \hline 
+ 2.83 &  0.3850& 0.0177 \\
+ \hline 
+ 4.00 &  0.3850&  0.0177 \\ 
+ \hline 
+ 5.66 &  0.3850& 0.0177 \\
+ \hline
+ 8.00 &  0.3847& 0.0189\\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+\caption{Values of figure \ref{fig:distro}}
+\label{table1}
+\end{table}
+ 
+Figures \ref{fig:single_histo} \& \ref{fig:distro} and Table \ref{table1} are a demonstration of how the absolute
+error of the spots are in a general Gaussian or normal distribution. 
   
   
       
 \section{Analysis}
 \label{sec:Analysis}
 
+Figures 
 
 \section{Discussion} % (fold)
 \label{sec:Discussion}
