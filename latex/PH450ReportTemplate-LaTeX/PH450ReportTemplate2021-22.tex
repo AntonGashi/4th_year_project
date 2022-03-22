@@ -152,26 +152,46 @@ Registration No.: \regnumber}
   \label{sub:spot-finding intro}
   
   Super-resolution microscopy is the process of taking the diffraction limit 
-  of a microscope, ~250nm in the x and y direction, and improving it by a 
-  factor of 2. In the past this has been achieved by ensemble techniques
+  of a microscope, ~250nm in the x and y direction, and improving it at a minimum by a 
+  factor of 2 although more modern methods improve it by up to a factor of 10. In the past this has been achieved by ensemble techniques
   like SIM (Structured Illumination Microscopy) and STED (Stimulated Emission Depletion)
   \textbf{insert explanation of ensemble techniques}. An improvement on these methods 
-  is single-molecule microscopy, in which molecules being imaged overcomes the 
-  diffraction limit by being fluorescent. There are two ways of doing this photo-activated localization
+  is single-molecule microscopy, in which molecules are individually fluoresced and 
+  imaged instead of ensembles which helps distinguish more detail and produce better
+  results than the diffraction limit.
+  There are two ways that this general method have been implemented; photo-activated localization
   microscopy(PALM) and stochastic optical reconstruction microscopy(STORM), both
   rely on fluorophores which are fluorescent chemicals that re-emit light after
   being excited. This helps as the fluorescence emits the light 
   stochastically so only a subset of molecules "light-up" at once, this is important 
   as if they are separated by at least 200nm then they can be located to nanometre precision. 
-  Since the molecules are now separated spatially you just need to repeat this process temporally
+  Since the molecules are now separated spatially this process needs to just needs to be repeated 
   until all molecules have been "switched-on", this gives a stack of images with blurry spots
-  which can be located and recombined into a final image with spot-precision on the order of ~20nm.\cite{galbraith2011super}
+  which can be located and recombined into a final image with spot-precision on the order of <~20nm.\cite{galbraith2011super}
   The resolution of a super-resolution image usually doesn't refer to the spot-precision of the 
   located molecule, rather it refers to the structural resolution, this can be calculated along 
   with the density of fluorophores as the Nyquist-Shannon sampling theorem states a minimum number 
   of fluorophores are required to resolve the structure. For example if the resolution is 20nm in 
   one dimension then fluorophores have to be separated at least 10nm apart at a density of 
   $~10^4\mu m^{-2}$.\cite{van2011single}\cite{shannon1949communication}
+
+  \subsubsection{Pixels and Resolution} % (fold)
+  \label{ssub:Pixel}
+   In the Modern Dictionary of Electronics by Graf a pixel is described as a, 
+   spatial resolution element.
+   The smallest distinguishable and resolvable area in an image.
+   \cite{graf1997modern}
+   This was mainly in reference to an analog image but the principle applies 
+   to a raster image, which is a NxM matrix of values that display colour and
+   intensity. In the specific case of the spot localisation that the Methods section 
+   (\ref{sec:Methods}) describe the images are NxN and 16-bit black and white.
+
+   Resolution is the capability of resolving two points or lines.
+   Since super-resolution by definition changes the resolution of the input images, 
+   the resolution of the output image needs to be quantified.
+   One of the ways to do this is by using the Nyquist-Shannon sampling theorem,
+   this states that \textbf{fix reference in bib file->}\cite{DEMPSEY2013561}\cite{tinnefeld2015far}
+  % subsubsection Pixel (end)
 
   
   \subsection{Motivation} % (fold)
@@ -184,14 +204,14 @@ Registration No.: \regnumber}
   per localisation, fewer steps or a mixture of all. 
 
   This doesn't just have applications in localisation microscopy but also 
-  can be used in other technologies, for example a paper published in the IEEE
+  can be used in other technologies, for example a paper published by Castorena and Creusere \cite{6638050}
   has the problem of needing a fast super-resolution technique to get higher 
-  spatial resolution from their LIDAR system. This system is constrained by the 
+  spatial resolution from their LIDAR (Light Detection and Ranging) system. This system is constrained by the 
   laser spot size and precision of the scanning mechanical unit as the single laser 
   source with sampling rates in the GHz range which achieves high accuracy for depth 
   and range resolution but poor spatial resolution. A consideration was to decrease the 
   diameter of the laser thus increasing the spatial sampling density, although this 
-  was deemed too computationally expensive.\cite{6638050}
+  was deemed too computationally expensive.
   
   With the almost exponentially increasing launching of small form factor
   satellites such as the CubeSat, arises the challenge of efficiently utilising
@@ -200,7 +220,7 @@ Registration No.: \regnumber}
   standard of accuracy, especially for the processes that the satellite depends
   on to operate like attitude control, power management and calculations for
   orbital maneuvers. The main method used for orienting(attitude control) CubSat
-  like satellites is by using a Star Tracker, this work by using a camera mounted
+  like satellites is by using a Star Tracker, this works by using a camera mounted
   facing stars that are known to the satellite via a star catalogue and moves
   based on how aligned or unaligned a reference image is with the actual image
   seen.\cite{calitz2015design} The method in which the image is processed so it
@@ -216,7 +236,10 @@ Registration No.: \regnumber}
 
   \textbf{still need to add more technologies that use spot localisation}
   
+  \subsection{Literature Review (don't call it literature review)} % (fold)
+  \label{sub:Literature Review (don't call it literature review)}
   
+  % subsection subsection name (end)
 
 % subsection subsection name (end)
 
@@ -235,7 +258,7 @@ algorithm.
 
 
 \section{Methods} % (fold)
-\label{sec:Background}
+\label{sec:Methods}
 
   \subsection{Centroiding} % (fold)
   \label{sub:Centroiding_meth}
@@ -267,13 +290,13 @@ algorithm.
     
     Point Spread Functions(PSF) is the way an object blurs due to the imaging of a point 
     source of light, it's the reason the diffraction limit of a microscope is 250nm (in the
-    x,y direction) and >450-700nm (in the z direction). The PSF is also the smallest resolvable
+    x,y direction) and >450-700nm (in the z direction).\cite{galbraith2011super} The PSF is also the smallest resolvable
     detail that can be seen with light as other objects that emit light that are smaller than 
     one another all appear to be the same size. Provided that laboratory equipment is set up correctly, 
     i.e. the lens is corrected for aberrations and constants are known such as aperture and angels 
     between lens and samples, methods like the Richards-Wolf model and Gibson-Lanni model will calculate
     the centre of a spot near perfectly. The problem with these methods is that they are complicated and 
-    slow, and also offer an answer that is unnecessarily accurate. \cite{richards1959electromagnetic}\cite{galbraith2011super}\cite{small2014fluorophore}
+    slow, and also offer an answer that is unnecessarily accurate. \cite{richards1959electromagnetic}\cite{small2014fluorophore}
 
 
     % subsubsection Point Spread Function (end)
@@ -285,7 +308,7 @@ algorithm.
     always going to be in the centre. Thus for 2-D spot finding that can't afford the computational time of 
     the previous method uses the more simple equation:
 
-    $$I(x,y)=I_0*exp(-a*k^2((x-x_0)^2+(y-y_0)^2))+b$$
+    $$I(x,y)=I_0\cdot \exp(-a\cdot k^2((x-x_0)^2+(y-y_0)^2))+b$$
 
     Where k is $\frac{2\pi}{\lambda}$, $a$ is the width of the PSF, $I_0$ is the peak intensity and b is the average background per pixel. \cite{small2014fluorophore}
 
@@ -298,7 +321,7 @@ algorithm.
     After this the position of the spot is estimated by a hyper-parameter optimisation method 
     which minimises the residual area left over from the fitting process.
     This triangle method looks to reduce the computational load by removing the integration step, 
-    this can be done as the area of a triangle is just $\frac{1}{2}\ base*height$. 
+    this can be done as the area of a triangle is just $\frac{1}{2}\ base\cdot height$. 
     On top of this, the method also sums pixel intensities across axis, firstly it gives a 
     better signal to noise ratio but also it means the triangle only needs to be rendered in 2 dimensions 
     instead of 3, further reducing the computational time. 
@@ -325,16 +348,16 @@ algorithm.
 
     \begin{figure}[h]
       \begin{center}
-        \includegraphics[width=0.2\textwidth]{project_pics/flowchart.png}
+        \includegraphics[width=0.4\textwidth]{project_pics/flowchart.png}
       \end{center}
-      \caption{Flowchart describing how the code for the methods works}
+      \caption{Flowchart describing how the code for the triangular fitting method works}
       \label{fig:flowchart}
     \end{figure}
     
     
     
 
-\section{Results} % (fold)
+\section{Results and analysis} % (fold)
 \label{sec:Results}
 
   \subsection{Centroiding} % (fold)
@@ -416,10 +439,6 @@ error of the spots are in a general Gaussian or normal distribution.
   
   
       
-\section{Analysis}
-\label{sec:Analysis}
-
-Figures 
 
 \section{Discussion} % (fold)
 \label{sec:Discussion}

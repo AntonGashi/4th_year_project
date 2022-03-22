@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{galbraith2011super}
 Catherine~G Galbraith and James~A Galbraith.
@@ -14,6 +14,24 @@ Sebastian van~de Linde, Steve Wolter, and Markus Sauer.
 Claude~Elwood Shannon.
 \newblock Communication in the presence of noise.
 \newblock {\em Proceedings of the IRE}, 37(1):10--21, 1949.
+
+\bibitem{graf1997modern}
+R.F. Graf.
+\newblock {\em Modern Dictionary of Electronics}.
+\newblock Newnes, 1997.
+
+\bibitem{DEMPSEY2013561}
+Graham~T. Dempsey.
+\newblock Chapter 24 - a userâ€™s guide to localization-based
+  super-resolution fluorescence imaging.
+\newblock In Greenfield Sluder and David~E. Wolf, editors, {\em Digital
+  Microscopy}, volume 114 of {\em Methods in Cell Biology}, pages 561--592.
+  Academic Press, 2013.
+
+\bibitem{tinnefeld2015far}
+Philip Tinnefeld, Christian Eggeling, and Stefan~W Hell.
+\newblock {\em Far-field optical nanoscopy}, volume~14.
+\newblock Springer, 2015.
 
 \bibitem{6638050}
 Juan Castorena and Charles~D. Creusere.

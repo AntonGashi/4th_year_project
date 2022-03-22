@@ -4,36 +4,38 @@
 
 
 ## intro 
+### subpixel
+- sub-pixel localisation explanation (done)
 
-- sub-pixel localisation explanation
-- reasoning behind my project 
+####pixel and resolution
+- definitions
 
-## lit review 
+### motivation
+- reasoning behind my project (semi done)
 
+### litreview
 - find places where spot finding can be generalised and make an argument for creating a faster algorithm 
 
 ## methods 
+### centroiding
 
-- centroiding 
-- explanation of gaussian method 
-- triangle method 
+### explanation of gaussian method 
+
+###triangle method 
   - explain the steps taken to create the algorithm 
   - set backs 
   - and final product 
 
-## results 
+## results and analysis
+###centroiding 
 
-- centroiding 
-- triangle
-
-## analysis
-
+###triangle
 - compare my results to each other 
 
 ## discussion 
-
 - results compared to imageJ and other papers
 - explain unexpected results 
 - discuss improvements 
 
 ## conclusion
+- whatever there is to conclude

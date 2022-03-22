@@ -1,9 +1,9 @@
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Graph of ideal spot data}}{4}{}
+\contentsline {figure}{\numberline {1}{\ignorespaces Graph of ideal spot data}}{5}{}
 \contentsline {figure}{\numberline {2}{\ignorespaces Graph of data from figure \ref {fig:visual_test_2} with the calculated area and residual}}{5}{}
-\contentsline {figure}{\numberline {3}{\ignorespaces Flowchart describing how the code for the methods works}}{5}{}
-\contentsline {figure}{\numberline {4}{\ignorespaces Simulated spots with R1.00, A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}}{6}{}
+\contentsline {figure}{\numberline {3}{\ignorespaces Flowchart describing how the code for the triangular fitting method works}}{6}{}
+\contentsline {figure}{\numberline {4}{\ignorespaces Simulated spots with R1.00, A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}}{7}{}
 \contentsline {figure}{\numberline {5}{\ignorespaces Spot localisation (like graph C in figure \ref {fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}}{7}{}
-\contentsline {figure}{\numberline {6}{\ignorespaces A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}}{7}{}
+\contentsline {figure}{\numberline {6}{\ignorespaces A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}}{8}{}
 \contentsline {figure}{\numberline {7}{\ignorespaces Histograms of the absolute error from each radii}}{8}{}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  13 MAR 2022 18:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  22 MAR 2022 19:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -486,65 +486,72 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 \tf@lot=\write6
 \openout6 = `PH450ReportTemplate2021-22.lot'.
 
- [1] [2]
+ [1]
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <12> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 265.
- [3]
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 178.
+ [2] [3]
 <project_pics/visual_test_2.png, id=40, 462.528pt x 346.896pt>
 File: project_pics/visual_test_2.png Graphic file (type png)
 <use project_pics/visual_test_2.png>
-Package pdftex.def Info: project_pics/visual_test_2.png  used on input line 308.
+Package pdftex.def Info: project_pics/visual_test_2.png  used on input line 331.
 (pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
-<project_pics/visual_test.png, id=42, 462.528pt x 346.896pt>
+ [4]
+<project_pics/visual_test.png, id=46, 462.528pt x 346.896pt>
 File: project_pics/visual_test.png Graphic file (type png)
 <use project_pics/visual_test.png>
-Package pdftex.def Info: project_pics/visual_test.png  used on input line 316.
+Package pdftex.def Info: project_pics/visual_test.png  used on input line 339.
 (pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
- [4 <./project_pics/visual_test_2.png>]
-<project_pics/flowchart.png, id=48, 308.15125pt x 843.15pt>
+<project_pics/flowchart.png, id=47, 308.15125pt x 843.15pt>
 File: project_pics/flowchart.png Graphic file (type png)
 <use project_pics/flowchart.png>
-Package pdftex.def Info: project_pics/flowchart.png  used on input line 328.
-(pdftex.def)             Requested size: 96.73788pt x 264.6802pt.
-<project_pics/single_test.png, id=49, 462.528pt x 346.896pt>
+Package pdftex.def Info: project_pics/flowchart.png  used on input line 351.
+(pdftex.def)             Requested size: 193.47578pt x 529.38615pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<project_pics/single_test.png, id=48, 462.528pt x 346.896pt>
 File: project_pics/single_test.png Graphic file (type png)
 <use project_pics/single_test.png>
-Package pdftex.def Info: project_pics/single_test.png  used on input line 351.
+Package pdftex.def Info: project_pics/single_test.png  used on input line 374.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
- [5 <./project_pics/visual_test.png> <./project_pics/flowchart.png>]
-<project_pics/no_noise_all_r.png, id=55, 462.528pt x 346.896pt>
+[5 <./project_pics/visual_test_2.png> <./project_pics/visual_test.png>] [6 <./project_pics/flowchart.png>]
+<project_pics/no_noise_all_r.png, id=58, 462.528pt x 346.896pt>
 File: project_pics/no_noise_all_r.png Graphic file (type png)
 <use project_pics/no_noise_all_r.png>
-Package pdftex.def Info: project_pics/no_noise_all_r.png  used on input line 363.
+Package pdftex.def Info: project_pics/no_noise_all_r.png  used on input line 386.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
- [6 <./project_pics/single_test.png>]
-<project_pics/single_histo.png, id=60, 462.528pt x 346.896pt>
+<project_pics/single_histo.png, id=59, 462.528pt x 346.896pt>
 File: project_pics/single_histo.png Graphic file (type png)
 <use project_pics/single_histo.png>
-Package pdftex.def Info: project_pics/single_histo.png  used on input line 372.
+Package pdftex.def Info: project_pics/single_histo.png  used on input line 395.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
-<project_pics/distro.png, id=61, 462.528pt x 346.896pt>
+ [7 <./project_pics/single_test.png> <./project_pics/no_noise_all_r.png>]
+<project_pics/distro.png, id=65, 462.528pt x 346.896pt>
 File: project_pics/distro.png Graphic file (type png)
 <use project_pics/distro.png>
-Package pdftex.def Info: project_pics/distro.png  used on input line 381.
+Package pdftex.def Info: project_pics/distro.png  used on input line 404.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
- [7 <./project_pics/no_noise_all_r.png> <./project_pics/single_histo.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 390.
- (./PH450ReportTemplate2021-22.bbl [8 <./project_pics/distro.png>]) [9] (./PH450ReportTemplate2021-22.aux) ) 
+(Font)              <10.95> on input line 413.
+ [8 <./project_pics/single_histo.png> <./project_pics/distro.png>] (./PH450ReportTemplate2021-22.bbl
+LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 25.
+ (/usr/share/texmf-dist/tex/latex/lm/ts1lmss.fd
+File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [9]) [10] (./PH450ReportTemplate2021-22.aux) ) 
 Here is how much of TeX's memory you used:
- 8866 strings out of 478353
- 132643 string characters out of 5854636
- 477324 words of memory out of 5000000
- 26819 multiletter control sequences out of 15000+600000
- 451763 words of font info for 65 fonts, out of 8000000 for 9000
+ 8906 strings out of 478353
+ 133518 string characters out of 5854636
+ 479392 words of memory out of 5000000
+ 26855 multiletter control sequences out of 15000+600000
+ 452133 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,12n,77p,734b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on PH450ReportTemplate2021-22.pdf (14 pages, 1256660 bytes).
+ 69i,11n,77p,734b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on PH450ReportTemplate2021-22.pdf (15 pages, 1262635 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 138 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
