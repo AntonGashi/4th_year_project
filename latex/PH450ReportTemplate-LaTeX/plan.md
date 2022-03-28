@@ -13,13 +13,13 @@
 ### motivation
 - reasoning behind my project (semi done)
 
-### litreview
+### litreview (needs done after disscusion)
 - find places where spot finding can be generalised and make an argument for creating a faster algorithm 
 
 ## methods 
-### centroiding
+### centroiding (needs done)
 
-### explanation of gaussian method 
+### explanation of gaussian method (semi-done)
 
 ###triangle method 
   - explain the steps taken to create the algorithm 

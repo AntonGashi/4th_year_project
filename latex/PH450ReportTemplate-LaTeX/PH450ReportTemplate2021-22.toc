@@ -10,22 +10,24 @@
 \contentsline {section}{\numberline {I}Introduction}{2}{}
 \contentsline {subsection}{\numberline {A}Sub-Pixel Localisation}{2}{}
 \contentsline {subsubsection}{\numberline {1}Pixels and Resolution}{2}{}
-\contentsline {subsection}{\numberline {B}Motivation}{2}{}
-\contentsline {subsection}{\numberline {C}Literature Review (don't call it literature review)}{3}{}
-\contentsline {section}{\numberline {II}Literature Review}{3}{}
-\contentsline {section}{\numberline {III}Methods}{3}{}
-\contentsline {subsection}{\numberline {A}Centroiding}{3}{}
+\contentsline {subsubsection}{\numberline {2}Fluorophores}{3}{}
+\contentsline {subsection}{\numberline {B}Motivation}{3}{}
+\contentsline {subsection}{\numberline {C}Literature Review (don't call it literature review)}{4}{}
+\contentsline {section}{\numberline {II}Methods}{4}{}
+\contentsline {subsection}{\numberline {A}Centroiding}{4}{}
 \contentsline {subsection}{\numberline {B}Fitting methods}{4}{}
 \contentsline {subsubsection}{\numberline {1}Point Spread Function}{4}{}
 \contentsline {subsubsection}{\numberline {2}Gaussian}{4}{}
-\contentsline {subsubsection}{\numberline {3}Triangular method}{4}{}
-\contentsline {section}{\numberline {IV}Results and analysis}{6}{}
-\contentsline {subsection}{\numberline {A}Centroiding}{6}{}
-\contentsline {subsection}{\numberline {B}Triangle Fitting}{6}{}
-\contentsline {section}{\numberline {V}Discussion}{9}{}
-\contentsline {subsection}{\numberline {A}Results in context of my aims}{9}{}
-\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{9}{}
-\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{9}{}
-\contentsline {subsection}{\numberline {D}Discuss improvements}{9}{}
-\contentsline {section}{\numberline {VI}Conclusion}{9}{}
-\contentsline {section}{References}{10}{}
+\contentsline {subsubsection}{\numberline {3}Triangular method}{5}{}
+\contentsline {section}{\numberline {III}Results and analysis}{8}{}
+\contentsline {subsection}{\numberline {A}Centroiding}{8}{}
+\contentsline {subsection}{\numberline {B}Triangle Fitting}{9}{}
+\contentsline {section}{\numberline {IV}Discussion}{11}{}
+\contentsline {subsection}{\numberline {A}Results in context of my aims}{11}{}
+\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{11}{}
+\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{11}{}
+\contentsline {subsection}{\numberline {D}Discuss improvements}{11}{}
+\contentsline {section}{\numberline {V}Conclusion}{11}{}
+\contentsline {section}{References}{12}{}
+\appendix 
+\contentsline {section}{\numberline {A}Appendix}{13}{}

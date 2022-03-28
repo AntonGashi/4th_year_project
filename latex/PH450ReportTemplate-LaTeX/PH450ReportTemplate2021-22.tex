@@ -171,9 +171,7 @@ Registration No.: \regnumber}
   The resolution of a super-resolution image usually doesn't refer to the spot-precision of the 
   located molecule, rather it refers to the structural resolution, this can be calculated along 
   with the density of fluorophores as the Nyquist-Shannon sampling theorem states a minimum number 
-  of fluorophores are required to resolve the structure. For example if the resolution is 20nm in 
-  one dimension then fluorophores have to be separated at least 10nm apart at a density of 
-  $~10^4\mu m^{-2}$.\cite{van2011single}\cite{shannon1949communication}
+  of fluorophores are required to resolve the structure (equation \ref{resolution_equation}). \cite{van2011single}\cite{shannon1949communication}
 
   \subsubsection{Pixels and Resolution} % (fold)
   \label{ssub:Pixel}
@@ -182,18 +180,64 @@ Registration No.: \regnumber}
    The smallest distinguishable and resolvable area in an image.
    \cite{graf1997modern}
    This was mainly in reference to an analog image but the principle applies 
-   to a raster image, which is a NxM matrix of values that display colour and
+   to a raster image, which is a $N\cdot M$ matrix of values that display colour and
    intensity. In the specific case of the spot localisation that the Methods section 
-   (\ref{sec:Methods}) describe the images are NxN and 16-bit black and white.
+   (\ref{sec:Methods}) describe the images are $N\cdot N$ and 16-bit black and white.
 
    Resolution is the capability of resolving two points or lines.
    Since super-resolution by definition changes the resolution of the input images, 
    the resolution of the output image needs to be quantified.
-   One of the ways to do this is by using the Nyquist-Shannon sampling theorem,
-   this states that \textbf{fix reference in bib file->}\cite{DEMPSEY2013561}\cite{tinnefeld2015far}
-  % subsubsection Pixel (end)
+   Firstly the uncertainty of a spatial measurement is set by the equation;
+   \begin{equation}\label{PSFequation}
+   \sigma_{x,y}\sim\frac{\sigma_{PSF}}{\sqrt{N}}
+   \end{equation}
 
-  
+   Where $\sigma_{PSF}$ is the standard deviation of the point spread function (PSF)
+   for the microscope, and $N$ is the number of detected photons per florescent event.
+   Since the relationship of equation \ref{PSFequation} is approximately the inverse square root, 
+   the more detected photons the lower the uncertainty becomes.\cite{DEMPSEY2013561}
+   One of the ways to do this is by using the Nyquist-Shannon sampling theorem,
+   this states that any detail in a measurement that is smaller than twice the size of the 
+   average label to label distance can reliably be resolved.\cite{tinnefeld2015far}
+   The Nyquist resolution limit can be written formally as; 
+   \begin{equation}\label{resolution_equation}
+     \textrm{Nyquist resolution limit} \/\ =\frac{2}{N^{\frac{1}{D}}}
+   \end{equation}
+
+   Where $N$ is the density of labels, and $D$ is the dimensionality. 
+   Labels in this specific case refers to each individual fluorescent event that is 
+   detected by the camera, the density of labels is sometimes constrained by the 
+   molecules being detected as if the structure that's trying to be detected is too
+   sparse the uncertainty remains relatively high. 
+   For example if the resolution was required to be 20nm in 
+   one dimension then fluorophores have to be separated at least 10nm apart at a density of 
+   $~10^4\mu m^{-2}$ at a minimum to achieve it.
+   The final resulting uncertainty of the image is therefor the maximum of either equation (\ref{PSFequation}) or (\ref{resolution_equation}). 
+
+
+   \subsubsection{Fluorophores} % (fold)
+   \label{ssub:Fluorophores}
+   
+   Single molecule super-resolution demands the switching of fluorophores
+   stochastically, this can be done reversibly or irreversibly. Reversible switching fluorophores
+   are photo-activated and emit light until it becomes non-fluorescent again unless reactivated.  
+   Irreversible switching fluorophores either start in the off state or the on state, if it 
+   starts in an off state it can be photo-activated and turned on then after a period of 
+   time it becomes bleached. If it starts switched on then it can be further excited 
+   and transition to a red-shifted state.\cite{van2011single}
+
+   According to equation \ref{resolution_equation} the resolution is increased 
+   if the number density $N$ is increased, although in order to locate or find a spot 
+   in a diffraction limited image the spots need to be spaced apart. 
+   Therefor the rate at which populations are on or off can be denoted by $k_{on}$ and 
+   $k_{off}$, also the rate at which the fluorophores switch to the on and off states matter 
+   and are denoted as $\tau_{on}$ and $\tau_{off}$. The switch rates are directly linked with 
+   how many excitations can be detected at once and thus are linked with the ability to 
+   accurately find the location of each spot. Ratios between on and off states are denoted as 
+   $r=\frac{k_{off}}{k_{on}}=\frac{\tau_{off}}{\tau_{on}}$, the larger the ratio, r, the more 
+   accurate results can be up until a point.
+   
+
   \subsection{Motivation} % (fold)
   \label{sub:Motivation}
   
@@ -203,7 +247,7 @@ Registration No.: \regnumber}
   produce a method of spot-finding that either less complex, less computations
   per localisation, fewer steps or a mixture of all. 
 
-  This doesn't just have applications in localisation microscopy but also 
+  The applications of spot finding reach far beyond localisation microscopy it 
   can be used in other technologies, for example a paper published by Castorena and Creusere \cite{6638050}
   has the problem of needing a fast super-resolution technique to get higher 
   spatial resolution from their LIDAR (Light Detection and Ranging) system. This system is constrained by the 
@@ -239,22 +283,14 @@ Registration No.: \regnumber}
   \subsection{Literature Review (don't call it literature review)} % (fold)
   \label{sub:Literature Review (don't call it literature review)}
   
-  % subsection subsection name (end)
-
-% subsection subsection name (end)
-
-
-\section{Literature Review} % (fold)
-\label{sec:lit review}
-
-
-The field of spot finding or star finding is a fairly recent field with papers
-coming out in the mid 80's from NASA. However the methods haven't changed that
-much since the main algorithm still used is centroiding since it's a very good
-compromise between quickness and accuracy being that it can give an answer in
-the 1-100 microsecond range \cite{delabie2014accurate}. Much of the innovation
-has come from optimising the algorithm or optimising the data going into the
-algorithm. 
+  
+  The field of spot finding or star finding is a fairly recent field with papers
+  coming out in the mid 80's from NASA. However the methods haven't changed that
+  much since the main algorithm still used is centroiding since it's a very good
+  compromise between quickness and accuracy being that it can give an answer in
+  the 1-100 microsecond range \cite{delabie2014accurate}. Much of the innovation
+  has come from optimising the algorithm or optimising the data going into the
+  algorithm. 
 
 
 \section{Methods} % (fold)
@@ -346,7 +382,7 @@ algorithm.
     the area under the triangle and a residual is left over, this residual parameter is the 
     variable to be minimised for in the optimisation routine.
 
-    \begin{figure}[h]
+    \begin{figure}[H]
       \begin{center}
         \includegraphics[width=0.4\textwidth]{project_pics/flowchart.png}
       \end{center}
@@ -363,32 +399,49 @@ algorithm.
   \subsection{Centroiding} % (fold)
   \label{sub:Centroiding_results}
   
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/distro_centriod_3.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_3}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/noise_cen_scatter_3.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_3_noise}
+  \end{figure}
+  
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/distro_centriod_11.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_11}
+  \end{figure}
+  
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/noise_cen_scatter_11.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_11_noise}
+  \end{figure}
+  
+  
+
   \subsection{Triangle Fitting} % (fold)
   \label{sub:Triangle Fitting}
 
   In figure \ref{fig:single_test} it can be seen that while using simulated data the mean accuracy of the 
   localisation is ~0.4 of a pixel whilst being executed in ~0.34s.
 
-  \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=0.7\textwidth]{project_pics/single_test.png}
-      \end{center}
-      \caption{Simulated spots with R1.00, A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}
-      \label{fig:single_test}
-    \end{figure}
+  Part C of figure \ref{fig:single_test} has been replicated for all simulated spots given in figure \ref{fig:no_noise_all_r}
+  to compare how the change in spot size changes accuracy.
 
-
-    Part C of figure \ref{fig:single_test} has been replicated for all simulated spots given in figure \ref{fig:no_noise_all_r}
-    to compare how the change in spot size changes accuracy.
-
-  \begin{figure}[H]
-    \begin{center}
-      \includegraphics[width=0.7\textwidth]{project_pics/no_noise_all_r.png}
-    \end{center}
-    \caption{Spot localisation (like graph C in figure \ref{fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}
-    \label{fig:no_noise_all_r}
-  \end{figure}
-  
   
   \begin{figure}[H]
     \begin{center}
@@ -408,34 +461,22 @@ algorithm.
   \end{figure}
 
 
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{||c || c c||} 
- \hline
- Radii & Average & Variance \\ [0.5ex] 
- \hline\hline
- 1.00 &  0.3850& 0.0177 \\ 
- \hline  
- 1.41 &  0.3850& 0.0177  \\
- \hline 
- 2.00 &  0.3850& 0.0177 \\
- \hline 
- 2.83 &  0.3850& 0.0177 \\
- \hline 
- 4.00 &  0.3850&  0.0177 \\ 
- \hline 
- 5.66 &  0.3850& 0.0177 \\
- \hline
- 8.00 &  0.3847& 0.0189\\ [1ex] 
- \hline
-\end{tabular}
-\end{center}
-\caption{Values of figure \ref{fig:distro}}
-\label{table1}
-\end{table}
- 
-Figures \ref{fig:single_histo} \& \ref{fig:distro} and Table \ref{table1} are a demonstration of how the absolute
-error of the spots are in a general Gaussian or normal distribution. 
+I was also given noisy spot data to test out my algorithm on, these spot were the same 
+as before but with read noise at 1 electron, average photon number per spot at 2000, 
+dark current at 0.1 electron per pixel and cg?
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.7\textwidth]{project_pics/distro_noise.png}
+    \end{center}
+    \caption{Histograms of the absolute error from each radii, but with noise}
+    \label{fig:distro_noise}
+  \end{figure}
+
+As can be seen in figure \ref{fig:distro_noise}, compared with figure \ref{fig:distro}, the distribution
+of results is shifted towards being less accurate. This is expected as noise adds randomness and 
+variability into the system, giving extra information that does not aid in the process of finding the 
+centre of a spot. 
   
   
       
@@ -465,11 +506,94 @@ error of the spots are in a general Gaussian or normal distribution.
 % section :Conclusion (end)
 
 
+
+\newpage
 \bibliographystyle{unsrt}
 \bibliography{myreferences}%reads a .bib file called myreferences.bib for the actual references in BibTeX format. You can call your BibTeX file something else if you prefer.
 \addcontentsline{toc}{section}{References}
 %If there are problems with compiling the LaTeX file with BibTeX, make sure that file names don't have spaces in them as this might cause problems
 
+\newpage
+\appendix
+
+\section{Appendix}
+
+%%% centroiding appendix part
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/distro_centriod_5.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_5}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/noise_cen_scatter_5.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_5_noise}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/distro_centriod_7.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_7}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{project_pics/noise_cen_scatter_7.png}
+    \end{center}
+    \caption{}
+    \label{fig:box_7_noise}
+  \end{figure}
+%%% centroiding appendix part end 
+
+  \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=0.7\textwidth]{project_pics/single_test.png}
+      \end{center}
+      \caption{Simulated spots with R1.00, A: Error in the X direction, B: Error in the Y direction, C: Absolute error from the ground-truth}
+      \label{fig:single_test}
+    \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.7\textwidth]{project_pics/no_noise_all_r.png}
+    \end{center}
+    \caption{Spot localisation (like graph C in figure \ref{fig:single_test}) of different radii, R, on perfect data (executed in 2.4s)}
+    \label{fig:no_noise_all_r}
+  \end{figure}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{||c || c c||} 
+ \hline
+ Radii & Average & Variance \\ [0.5ex] 
+ \hline\hline
+ 1.00 &  0.3850& 0.0177 \\ 
+ \hline  
+ 1.41 &  0.3850& 0.0177  \\
+ \hline 
+ 2.00 &  0.3850& 0.0177 \\
+ \hline 
+ 2.83 &  0.3850& 0.0177 \\
+ \hline 
+ 4.00 &  0.3850&  0.0177 \\ 
+ \hline 
+ 5.66 &  0.3850& 0.0177 \\
+ \hline
+ 8.00 &  0.3847& 0.0189\\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+\caption{Values of figure \ref{fig:distro}}
+\label{table1}
+\end{table}
 
 % If there are appendices, these starts from here. Remove from this line until just before \end{document} if you are not using it 
 

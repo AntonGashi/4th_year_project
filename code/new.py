@@ -220,6 +220,17 @@ file_sum_x_r8_noise,file_sum_y_r8_noise=sum_(file_r8_noise)
 ### file variable define end ###
 
 start=time.perf_counter()
+full_search_result_x_r2,full_search_result_y_r2=full_search(file_sum_x_r2_noise,file_sum_y_r2_noise)
+full_search_result_x_r283,full_search_result_y_r283=full_search(file_sum_x_r283_noise,file_sum_y_r283_noise)
+full_search_result_x_r4,full_search_result_y_r4=full_search(file_sum_x_r4_noise,file_sum_y_r4_noise)
+full_search_result_x_r566,full_search_result_y_r566=full_search(file_sum_x_r566_noise,file_sum_y_r566_noise)
+full_search_result_x_r8,full_search_result_y_r8=full_search(file_sum_x_r8_noise,file_sum_y_r8_noise)
+stop=time.perf_counter()
+
+timetaken=stop-start
+
+'''
+start=time.perf_counter()
 full_search_result_x_r1,full_search_result_y_r1=full_search(file_sum_x_r1,file_sum_y_r1)
 full_search_result_x_r141,full_search_result_y_r141=full_search(file_sum_x_r141,file_sum_y_r141)
 full_search_result_x_r2,full_search_result_y_r2=full_search(file_sum_x_r2,file_sum_y_r2)
@@ -228,18 +239,17 @@ full_search_result_x_r4,full_search_result_y_r4=full_search(file_sum_x_r4,file_s
 full_search_result_x_r566,full_search_result_y_r566=full_search(file_sum_x_r566,file_sum_y_r566)
 full_search_result_x_r8,full_search_result_y_r8=full_search(file_sum_x_r8,file_sum_y_r8)
 stop=time.perf_counter()
-
-timetaken=stop-start
-
+'''
 ###
 #All for display#
 ###
+'''
 error_x_r1=abs(full_search_result_x_r1-(groundtruth_r1[:,1]))
 error_y_r1=abs(full_search_result_y_r1-(groundtruth_r1[:,0]))
 
 error_x_r141=abs(full_search_result_x_r141-(groundtruth_r141[:,1]))
 error_y_r141=abs(full_search_result_y_r141-(groundtruth_r141[:,0]))
-
+'''
 error_x_r2=abs(full_search_result_x_r2-(groundtruth_r2[:,1]))
 error_y_r2=abs(full_search_result_y_r2-(groundtruth_r2[:,0]))
 
@@ -256,7 +266,7 @@ error_x_r8=abs(full_search_result_x_r8-(groundtruth_r8[:,1]))
 error_y_r8=abs(full_search_result_y_r8-(groundtruth_r8[:,0]))
 
 
-
+'''
 calculated_points_r1=np.stack((full_search_result_x_r1,full_search_result_y_r1),axis=1)
 sub_of_cal_ground_r1=groundtruth_r1.reshape(2,100)-calculated_points_r1.reshape(2,100)
 abs_error_r1=np.zeros(100)
@@ -264,7 +274,7 @@ abs_error_r1=np.zeros(100)
 calculated_points_r141=np.stack((full_search_result_x_r141,full_search_result_y_r141),axis=1)
 sub_of_cal_ground_r141=groundtruth_r141.reshape(2,100)-calculated_points_r141.reshape(2,100)
 abs_error_r141=np.zeros(100)
-
+'''
 calculated_points_r2=np.stack((full_search_result_x_r2,full_search_result_y_r2),axis=1)
 sub_of_cal_ground_r2=groundtruth_r2.reshape(2,100)-calculated_points_r2.reshape(2,100)
 abs_error_r2=np.zeros(100)
@@ -288,8 +298,8 @@ abs_error_r8=np.zeros(100)
 
 
 for i in range(len(groundtruth_r1)):
-    abs_error_r1[i]=np.linalg.norm(sub_of_cal_ground_r1[:,i])
-    abs_error_r141[i]=np.linalg.norm(sub_of_cal_ground_r141[:,i])
+    #abs_error_r1[i]=np.linalg.norm(sub_of_cal_ground_r1[:,i])
+    #abs_error_r141[i]=np.linalg.norm(sub_of_cal_ground_r141[:,i])
     abs_error_r2[i]=np.linalg.norm(sub_of_cal_ground_r2[:,i])
     abs_error_r283[i]=np.linalg.norm(sub_of_cal_ground_r283[:,i])
     abs_error_r4[i]=np.linalg.norm(sub_of_cal_ground_r4[:,i])
@@ -299,6 +309,93 @@ for i in range(len(groundtruth_r1)):
 
 
 
+x=np.linspace(0,100,100)
+
+fig, ((ax1,ax2,ax3),(ax4,ax5,ax6))=plt.subplots(2,3,sharey=True,sharex=False,tight_layout=True)
+
+print(format(timetaken,".2"))
+
+
+
+fig.supxlabel('Index Of Images')
+fig.supylabel('Absolute Error (pixels)')
+
+#fig.supxlabel('Absolute Error (Pixels)')
+#fig.supylabel('Absolute Amount')
+
+ax1.scatter(x,abs_error_r2,marker='x')
+avg_abs=np.average(abs_error_r2)
+med_abs=np.median(abs_error_r2)
+var_abs=np.var(abs_error_r2)
+#hist,bins,patches=ax1.hist(abs_error_r2,30)
+#pdf_y=gauss(bins,avg_abs,var_abs)
+#ax1.plot(bins,pdf_y,label='Fitted Gaussian')
+#ax1.vlines(avg_abs,0,8,color='r',label='Average')
+ax1.axhline(avg_abs,100,color='r',linestyle=':',label='Average')
+ax1.axhline(med_abs,0,100,color='k',linestyle=':',label='Median')
+ax1.set_title('R2.00')
+#print(avg_abs,var_abs)
+
+ax2.set_title('R2.83')
+ax2.scatter(x,abs_error_r283,marker='x')
+avg_abs=np.average(abs_error_r283)
+med_abs=np.median(abs_error_r283)
+var_abs=np.var(abs_error_r283)
+#hist2,bins2,patches2=ax2.hist(abs_error_r283,30)
+#pdf_y2=gauss(bins2,avg_abs,var_abs)
+#ax2.plot(bins2,pdf_y2)
+#ax2.vlines(avg_abs,0,8,color='r')
+ax2.axhline(avg_abs,0,100,color='r',linestyle=':')
+ax2.axhline(med_abs,0,100,color='k',linestyle=':')
+
+ax3.set_title('R4.00')
+ax3.scatter(x,abs_error_r4,marker='x')
+avg_abs=np.average(abs_error_r4)
+med_abs=np.median(abs_error_r4)
+var_abs=np.var(abs_error_r4)
+#hist,bins,patches=ax3.hist(abs_error_r4,30)
+#pdf_y=gauss(bins,avg_abs,var_abs)
+#ax3.plot(bins,pdf_y)
+#ax3.vlines(avg_abs,0,8,color='r')
+ax3.axhline(avg_abs,0,100,color='r',linestyle=':')
+ax3.axhline(med_abs,0,100,color='k',linestyle=':')
+
+ax4.set_title('R5.66')
+ax4.scatter(x,abs_error_r566,marker='x')
+aavg_abs=np.average(abs_error_r566)
+med_abs=np.median(abs_error_r566)
+var_abs=np.var(abs_error_r566)
+#hist,bins,patches=ax4.hist(abs_error_r566,30)
+#pdf_y=gauss(bins,avg_abs,var_abs)
+#ax4.plot(bins,pdf_y)
+#ax4.vlines(avg_abs,0,8,color='r')
+ax4.axhline(avg_abs,0,100,color='r',linestyle=':')
+ax4.axhline(med_abs,0,100,color='k',linestyle=':')
+
+ax5.set_title('R8.00')
+ax5.scatter(x,abs_error_r8,marker='x')
+avg_abs=np.average(abs_error_r8)
+med_abs=np.median(abs_error_r8)
+var_abs=np.var(abs_error_r8)
+#hist,bins,patches=ax5.hist(abs_error_r8,30)
+#pdf_y=gauss(bins,avg_abs,var_abs)
+#ax5.plot(bins,pdf_y)
+#ax5.vlines(avg_abs,0,8,color='r')
+ax5.axhline(avg_abs,0,100,color='r',linestyle=':')
+ax5.axhline(med_abs,0,100,color='k',linestyle=':')
+
+
+plt.delaxes(ax6)
+fig.legend(loc='lower right')
+plt.tight_layout()
+#plt.show()
+plt.savefig('noise_scatter.png',dpi=400)
+
+
+
+
+
+'''
 x=np.linspace(0,100,100)
 
 fig, ((ax1,ax2,ax3,ax4),(ax5,ax6,ax7,ax8))=plt.subplots(2,4,sharey=True,sharex=False,tight_layout=True)
@@ -329,9 +426,9 @@ ax2.set_title('R1.41')
 avg_abs=np.average(abs_error_r141)
 med_abs=np.median(abs_error_r141)
 var_abs=np.var(abs_error_r141)
-hist,bins,patches=ax2.hist(abs_error_r141,30)
-pdf_y=gauss(bins,avg_abs,var_abs)
-ax2.plot(bins,pdf_y)
+hist2,bins2,patches2=ax2.hist(abs_error_r141,30)
+pdf_y2=gauss(bins2,avg_abs,var_abs)
+ax2.plot(bins2,pdf_y2)
 ax2.vlines(avg_abs,0,8,color='r')
 #ax2.axhline(avg_abs,0,100,color='r',linestyle=':')
 #ax2.axhline(med_abs,0,100,color='k',linestyle=':')
@@ -400,11 +497,13 @@ print(avg_abs,var_abs)
 plt.delaxes(ax8)
 fig.legend(loc='lower right')
 plt.tight_layout()
-plt.savefig('distro.png',dpi=400)
+plt.show()
+#plt.savefig('distro.png',dpi=400)
 ## maybe put a min and max hline on the graphs
 ###
 #All for display#
 ###
+'''
 
 '''
 ### extra that i may or may not need

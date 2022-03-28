@@ -1,0 +1,44 @@
+   Where $\sigma_{PSF}$ is the standard deviation of the point spread function (PSF)
+   for the microscope, and $N$ is the number of detected photons per florescent event.
+   Since the relationship of equation \ref{PSFequation} is approximately the inverse square root, 
+   the more detected photons the lower the uncertainty becomes.\cite{DEMPSEY2013561}
+   One of the ways to do this is by using the Nyquist-Shannon sampling theorem,
+   this states that any detail in a measurement that is smaller than twice the size of the 
+   average label to label distance can reliably be resolved.\cite{tinnefeld2015far}
+   The Nyquist resolution limit can be written formally as; 
+   \begin{equation}\label{resolution_equation}
+     \textrm{Nyquist resolution limit} \/\ =\frac{2}{N^{\frac{1}{D}}}
+   \end{equation}
+
+   Where $N$ is the density of labels, and $D$ is the dimensionality. 
+   Labels in this specific case refers to each individual fluorescent event that is 
+   detected by the camera, the density of labels is sometimes constrained by the 
+   molecules being detected as if the structure that's trying to be detected is too
+   sparse the uncertainty remains relatively high. 
+   For example if the resolution was required to be 20nm in 
+   one dimension then fluorophores have to be separated at least 10nm apart at a density of 
+   $~10^4\mu m^{-2}$ at a minimum to achieve it.
+   The final resulting uncertainty of the image is therefor the maximum of either equation (\ref{PSFequation}) or (\ref{resolution_equation}). 
+
+
+   \subsubsection{Fluorophores} % (fold)
+   \label{ssub:Fluorophores}
+   
+   Single molecule super-resolution demands the switching of fluorophores
+   stochastically, this can be done reversibly or irreversibly. Reversible switching fluorophores
+   are photo-activated and emit light until it becomes non-fluorescent again unless reactivated.  
+   Irreversible switching fluorophores either start in the off state or the on state, if it 
+   starts in an off state it can be photo-activated and turned on then after a period of 
+   time it becomes bleached. If it starts switched on then it can be further excited 
+   and transition to a red-shifted state.\cite{van2011single}
+
+   According to equation \ref{resolution_equation} the resolution is increased 
+   if the number density $N$ is increased, although in order to locate or find a spot 
+   in a diffraction limited image the spots need to be spaced apart. 
+   Therefor the rate at which populations are on or off can be denoted by $k_{on}$ and 
+   $k_{off}$, also the rate at which the fluorophores switch to the on and off states matter 
+   and are denoted as $\tau_{on}$ and $\tau_{off}$. The switch rates are directly linked with 
+   how many excitations can be detected at once and thus are linked with the ability to 
+   accurately find the location of each spot. Ratios between on and off states are denoted as 
+   $r=\frac{k_{off}}{k_{on}}=\frac{\tau_{off}}{\tau_{on}}$, the larger the ratio, r, the more 
+   accurate results can be up until a point.
