@@ -1,44 +1,69 @@
-   Where $\sigma_{PSF}$ is the standard deviation of the point spread function (PSF)
-   for the microscope, and $N$ is the number of detected photons per florescent event.
-   Since the relationship of equation \ref{PSFequation} is approximately the inverse square root, 
-   the more detected photons the lower the uncertainty becomes.\cite{DEMPSEY2013561}
-   One of the ways to do this is by using the Nyquist-Shannon sampling theorem,
-   this states that any detail in a measurement that is smaller than twice the size of the 
-   average label to label distance can reliably be resolved.\cite{tinnefeld2015far}
-   The Nyquist resolution limit can be written formally as; 
-   \begin{equation}\label{resolution_equation}
-     \textrm{Nyquist resolution limit} \/\ =\frac{2}{N^{\frac{1}{D}}}
-   \end{equation}
+       Once the triangle algorithm was implemented it was tested on TIFF stacks of 100 images 
+    of perfect spot data. The absolute error (Euclidean distance) was calculated from each 
+    axis and plotted as seen in figure \ref{fig:single_histo} A. In image B a histogram 
+    was produced so that the spread was more visible.
 
-   Where $N$ is the density of labels, and $D$ is the dimensionality. 
-   Labels in this specific case refers to each individual fluorescent event that is 
-   detected by the camera, the density of labels is sometimes constrained by the 
-   molecules being detected as if the structure that's trying to be detected is too
-   sparse the uncertainty remains relatively high. 
-   For example if the resolution was required to be 20nm in 
-   one dimension then fluorophores have to be separated at least 10nm apart at a density of 
-   $~10^4\mu m^{-2}$ at a minimum to achieve it.
-   The final resulting uncertainty of the image is therefor the maximum of either equation (\ref{PSFequation}) or (\ref{resolution_equation}). 
+   For the centroiding method box sizes of 3, 5, 7 and 11 were used in the production 
+  of the histograms pertaining to the absolute error, this was done for the noisy data as 
+  well. The rest of the data not presented in the main body of text is available in the appendix 
+  section (\ref{sec:appendix}).
 
+ The results of the centroiding algorithm in figure \ref{fig:box_3} show a fairly poor 
+  level of accuracy, ranging from a $0\rightarrow 1.5$ pixel error approximately. This lack of accuracy 
+  is especially pronounced the larger the radii of spot, the reason for this increasing 
+  error is due to the spots being larger in the same sized 50x50 images. The radii of the 
+  airy disk that was used to generate the spots is 'physically' larger than the box size 
+  that the centroiding is using. This holds true for the radii that are larger than R1.5 
+  as the box size's diameter, as well as the diameter of the airy disk, is 3 pixels. The further 
+  increase of inaccuracy seen in figure \ref{fig:box_3} R4.00, R5.66 and R8.00 is due to the 
+  3x3 box being placed roughly where the centre of the spot already is, then the algorithm is 
+  ran which in essence takes the average of the intensities. This 3x3 box is not given a reasonable 
+  range of intensities to average over thus the method will be less likely to give the correct answer,
+  this instead gives a range of answers from $0\rightarrow 1.5$ pixels approximately as if the 
+  local maximum finder roughly gives an answer the centroiding algorithm will only give and answer 
+  that is 1.5 pixels off of that guess. Since in this perfect data that only has one spot per image, the 
+  local maximum finder will predict where the spot is to a single pixel of accuracy thus the maximum 
+  error seen should indeed be fractionally larger than 1.5 pixels as observed.
 
-   \subsubsection{Fluorophores} % (fold)
-   \label{ssub:Fluorophores}
-   
-   Single molecule super-resolution demands the switching of fluorophores
-   stochastically, this can be done reversibly or irreversibly. Reversible switching fluorophores
-   are photo-activated and emit light until it becomes non-fluorescent again unless reactivated.  
-   Irreversible switching fluorophores either start in the off state or the on state, if it 
-   starts in an off state it can be photo-activated and turned on then after a period of 
-   time it becomes bleached. If it starts switched on then it can be further excited 
-   and transition to a red-shifted state.\cite{van2011single}
+  In figure \ref{fig:box_3_noise} noisy spot data was provided to test out the algorithms on, 
+  these spot were the same as before but with read noise at 1 electron, average photon number 
+  per spot at 2000 and dark current at 0.1 electron per pixel and cg? Also the number of radii 
+  were reduced, R1.00 and R1.41 were removed. These noise values were chosen 
+  to replicate real world noise levels in order to test all algorithms in isolation from any other 
+  variables so that the spot finding methods could be objectively observed. 
 
-   According to equation \ref{resolution_equation} the resolution is increased 
-   if the number density $N$ is increased, although in order to locate or find a spot 
-   in a diffraction limited image the spots need to be spaced apart. 
-   Therefor the rate at which populations are on or off can be denoted by $k_{on}$ and 
-   $k_{off}$, also the rate at which the fluorophores switch to the on and off states matter 
-   and are denoted as $\tau_{on}$ and $\tau_{off}$. The switch rates are directly linked with 
-   how many excitations can be detected at once and thus are linked with the ability to 
-   accurately find the location of each spot. Ratios between on and off states are denoted as 
-   $r=\frac{k_{off}}{k_{on}}=\frac{\tau_{off}}{\tau_{on}}$, the larger the ratio, r, the more 
-   accurate results can be up until a point.
+  The noisy data for the 3x3 centroid box size did not have a pronounced impact on average 
+  accuracy per radii. This again is due to the size of the box being small relative to the 
+  size of the spots, thus mostly not allowing the noise to play a part in the calculation of the 
+  centre of the spot. One difference that the noisy data does seem to show is that it gives a more 
+  even spread of answers around it's average, this suggests that although the noisy data 
+  is not changing the average it is having an effect on the centroiding algorithm. The limiting factor 
+  in this case is the box size in which the algorithm is interested in.
+
+  In figure \ref{fig:box_11} the box size used was 11x11, this increases the sub-pixel localisation 
+  drastically compared to figure \ref{fig:box_3}. The spread of all answers is smaller using 11x11 instead of using 3x3
+  boxes, the spread also changes with radii sequentially getting larger along with the average. 
+  This is due to the larger box size being able to fit 
+  more pixels in to average over effectively, this is clearly evident in the R5.66 and R8.00 histogram as there is a 
+  significant jump in inaccuracy as the radii is still larger than the radii of the box. 
+
+  In figure \ref{fig:box_11_noise} when centroiding was used on the noisy data with an 11x11 box size, 
+  on average the accuracy decreased as expected and gave a similar average error for each radii apart from R8.00. 
+  Again this will be due to the fact that the R8.00 spot will not fit into the box size being calculated 
+  but also in relation to the spot, as the size of the spot increases so to does the noise in the images 
+  provided.
+
+  In figure \ref{fig:box_var_r8} the box size for making the centroiding calculation 
+  was varied from 3 to 49 $\textrm{pixels}^2$ in odd increments, this was tested to understand the 
+  relationship between box size and accuracy. In general the larger the box size the more accuracy 
+  gained this was expected especially for the perfect data as there was only one spot per image, 
+  although this would be impractical for real data as spot are more than likely to be closer than 
+  $\approx 15$ pixels. 
+
+  Figure \ref{fig:noise_box_r8}, similar to figure \ref{fig:box_var_r8}, shows the accuracy of the 
+  centroid method against the varying box size, but on a set of noisy data. Here it can be seen that 
+  for a period of box size increases the accuracy also increases, then it minimises and then decreases indefinitely.
+  Presumably this specific box size minimises the error at $\approx 15$ pixels due to the radii being R8.00, 
+  as each spot seems to be most optimised at double it's radii. This makes sense as if the centre is 
+  what the algorithm is looking for then it should look exactly where that spot is ideally, presuming 
+  there are other artefacts in the image like noise. 

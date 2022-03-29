@@ -9,7 +9,7 @@ import pandas as pd
 import math
 
 
-file=tf.TiffSequence("Perfect Spots r4.00/Perfect Spots r4.00.tif").asarray().reshape(100,50,50)
+file=tf.TiffSequence("Noisy Spots/Noisy Spots r2.00/Noisy Spots r2.00.tif").asarray().reshape(100,50,50)
 
 groundtruth=pd.DataFrame.to_numpy(pd.read_csv("Perfect Spots r4.00/groundtruth.csv"))
 def sum_(file):
@@ -21,6 +21,9 @@ def sum_(file):
 file_=sum_(file)
 #file_=file_[:,19:31]
 start=time.perf_counter()
+
+plt.plot(file_[0])
+plt.show()
 
 #@jit(nopython=True)
 def triangle(centre,halfbase,height):
@@ -150,7 +153,7 @@ def grid_serch3(file,image):
     loc_1=np.where(second_pass_res==np.min(second_pass_res))
     c,hb,h=second_pass_centre[loc_1[0]],second_pass_hb[loc_1[1]],second_pass_height[loc_1[2]]
     return c,hb,h
-
+'''
 pic=9
 c,hb,h=grid_serch3(file_,pic)
 tri_=triangle(float(c),float(hb),float(h))
@@ -161,7 +164,7 @@ plt.show()
 #plt.plot(tri_[0],tri_[1])
 #plt.plot(file_[pic,:])
 #plt.show()
-
+'''
 '''
 pic=9
 new_s=grid_serch2(file_,pic)

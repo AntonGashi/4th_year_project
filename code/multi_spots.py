@@ -24,7 +24,8 @@ def local_max(file):
     iter_=2
     loop=int(file.shape[1]/iter_)
     for i in range(file.shape[0]):
-        filemax_thresh=(np.amax(file[i]))-1
+
+        filemax_thresh=(np.amax(file[i]))-0.5
         for j in range(loop-1):
             for k in range(loop-1):
                 max_=np.amax(file[i,(j*iter_):((j+1)*iter_),(k*iter_):((k+1)*iter_)])
@@ -33,13 +34,15 @@ def local_max(file):
                     results=np.vstack((results,x))
                 else:
                     continue
+        if len(results)>=101:
+            break ##temp fix 
     return results
 
 @jit(nopython=True)
 def centriod(file,loc_max,box_size):
     loc=np.zeros_like(loc_max)
-    index=round((box_size-1)/2)
-    for i in range(loc_max.shape[0]):
+    index=int((box_size-1)/2)
+    for i in range(len(file)-1):
         sum_int,x_pos,y_pos=0,0,0
         x,y=int(loc_max[i,0]),int(loc_max[i,1])
         for j in range(box_size-1):
@@ -50,35 +53,41 @@ def centriod(file,loc_max,box_size):
         x_=(x_pos/sum_int)
         y_=(y_pos/sum_int)
         loc[i]=[x_,y_]
+
     return loc
 
 
 def display(num_of_boxes,picture,file_):
     start=time.perf_counter()
 
-    groundtruth_r8=pd.DataFrame.to_numpy(pd.read_csv("Perfect Spots r4.00/groundtruth.csv"))+24.5
+    groundtruth_r8=pd.DataFrame.to_numpy(pd.read_csv("Perfect Spots r1.00/groundtruth.csv"))+24.5
     box_size=np.arange(3,num_of_boxes+1,2,dtype=int)
     loc_centroid=np.zeros([len(box_size),loc_max.shape[0],2])
     error=np.zeros([len(box_size),loc_max.shape[0],2])
     avg_diff=np.zeros([len(box_size),2])
+    abs_error=np.zeros(len(box_size))
     for j in range(len(box_size)):
         loc_centroid[j]=centriod(file_,loc_max,box_size[j])
     for k in range(len(box_size)):
         error[k]=np.absolute(np.subtract(loc_centroid[k],groundtruth_r8))
         avg_diff[k,0],avg_diff[k,1]=np.average(error[k,0:,0]),np.average(error[k,0:,1])
+        abs_error[k]=np.linalg.norm(error[k,:])
     fig_one_box=np.argmin(avg_diff[:,0])
-
+    
     plt.xlabel('Box Size (in odd increments)')
-    plt.ylabel('Differance From Ground Truth (absolute value)')
-    plt.plot(box_size,avg_diff[0:,0],label='X Values',linestyle='-')
-    plt.plot(box_size,avg_diff[0:,1],label='Y Values',linestyle='--')
+    plt.ylabel('Differance From Ground Truth Average (absolute value)')
+    plt.plot(box_size,avg_diff[0:,0],linestyle='-')
+    #plt.plot(box_size,avg_diff[0:,1],label='Y Values',linestyle='--')
     plt.ylim(0)
     plt.xlim(box_size[0],box_size[-1])
     plt.hlines(avg_diff[fig_one_box,0],box_size[0],box_size[-1],linestyle=':',color='k',label='Minimum at {}'.format(np.round((avg_diff[fig_one_box,0]),4)))
+    #plt.hlines(abs_error[fig_one_box],box_size[0],box_size[-1])
     plt.legend(shadow=True,fancybox=True)
     stop=time.perf_counter()
     print('Total Time Taken {}s'.format(np.round((stop-start),2)))
-    plt.show()
+    plt.tight_layout()
+    #plt.show()
+    plt.savefig('box_size_var_r1.png',dpi=300)
     pass
 
 def gauss(x,avg,var):
@@ -93,10 +102,10 @@ folder="r4.00"
 #display(num_of_boxes(max is 49 as picture size is 50x50),picture(max is 99))
 
     
-file_=tf.TiffSequence("Noisy Spots/Noisy Spots r8.00/Noisy Spots r8.00.tif").asarray().reshape(100,50,50)
-
+#file_=tf.TiffSequence("Noisy Spots/Noisy Spots r2.00/Noisy Spots r2.00.tif").asarray().reshape(100,50,50)
+file_=tf.TiffSequence("Perfect Spots r1.00/Perfect Spots r1.00.tif").asarray().reshape(100,50,50)
 loc_max=np.delete((local_max(file_)),0,0)
-display(49,0,file_)
+display(49,1,file_)
 
 ###
 #temp
@@ -141,6 +150,8 @@ groundtruth_r8=pd.DataFrame.to_numpy(pd.read_csv("Perfect Spots r8.00/groundtrut
 file_r8_noise=tf.TiffSequence("Noisy Spots/Noisy Spots r8.00/Noisy Spots r8.00.tif").asarray().reshape(100,50,50)
 
 
+#loc_max=np.delete((local_max(file_r1)),0,0)
+
 start=time.perf_counter()
 
 no_of_boxes=11
@@ -155,23 +166,23 @@ sub_of_cal_ground_r141=groundtruth_r141.reshape(2,100)-calculated_points_r141.re
 abs_error_r141=np.zeros(100)
 
 
-calculated_points_r2=centriod(file_r2_noise,loc_max,no_of_boxes)
+calculated_points_r2=centriod(file_r2,loc_max,no_of_boxes)
 sub_of_cal_ground_r2=groundtruth_r2.reshape(2,100)-calculated_points_r2.reshape(2,100)
 abs_error_r2=np.zeros(100)
 
-calculated_points_r283=centriod(file_r283_noise,loc_max,no_of_boxes)
+calculated_points_r283=centriod(file_r283,loc_max,no_of_boxes)
 sub_of_cal_ground_r283=groundtruth_r283.reshape(2,100)-calculated_points_r283.reshape(2,100)
 abs_error_r283=np.zeros(100)
 
-calculated_points_r4=centriod(file_r4_noise,loc_max,no_of_boxes)
+calculated_points_r4=centriod(file_r4,loc_max,no_of_boxes)
 sub_of_cal_ground_r4=groundtruth_r4.reshape(2,100)-calculated_points_r4.reshape(2,100)
 abs_error_r4=np.zeros(100)
 
-calculated_points_r566=centriod(file_r566_noise,loc_max,no_of_boxes)
+calculated_points_r566=centriod(file_r566,loc_max,no_of_boxes)
 sub_of_cal_ground_r566=groundtruth_r566.reshape(2,100)-calculated_points_r566.reshape(2,100)
 abs_error_r566=np.zeros(100)
 
-calculated_points_r8=centriod(file_r8_noise,loc_max,no_of_boxes)
+calculated_points_r8=centriod(file_r8,loc_max,no_of_boxes)
 sub_of_cal_ground_r8=groundtruth_r8.reshape(2,100)-calculated_points_r8.reshape(2,100)
 abs_error_r8=np.zeros(100)
 stop=time.perf_counter()
@@ -278,7 +289,7 @@ plt.savefig('noise_cen_scatter_11.png',dpi=400)
 '''
 x=np.linspace(0,100,100)
 
-fig, ((ax1,ax2,ax3,ax4),(ax5,ax6,ax7,ax8))=plt.subplots(2,4,sharey=True,sharex=False,tight_layout=True)
+fig, ((ax1,ax2,ax3,ax4),(ax5,ax6,ax7,ax8))=plt.subplots(2,4,sharey=False,sharex=True,tight_layout=True)
 
 print(format(timetaken,".2"))
 
@@ -381,5 +392,5 @@ plt.delaxes(ax8)
 fig.legend(loc='lower right')
 plt.tight_layout()
 #plt.show()
-plt.savefig('distro_centriod_5.png',dpi=400)
+plt.savefig('distro_centriod_11_share.png',dpi=400)
 '''

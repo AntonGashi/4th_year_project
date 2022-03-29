@@ -390,6 +390,18 @@ Registration No.: \regnumber}
       \label{fig:flowchart}
     \end{figure}
     
+    Once the triangle algorithm was implemented it was tested on TIFF stacks of 100 images 
+    of perfect spot data. The absolute error (Euclidean distance) was calculated from each 
+    axis and plotted as seen in figure \ref{fig:single_histo} A. In image B a histogram 
+    was produced so that the spread was more visible.
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.7\textwidth]{project_pics/single_histo.png}
+    \end{center}
+    \caption{A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}
+    \label{fig:single_histo}
+  \end{figure}
     
     
 
@@ -398,40 +410,127 @@ Registration No.: \regnumber}
 
   \subsection{Centroiding} % (fold)
   \label{sub:Centroiding_results}
-  
+
+  For the centroiding method box sizes of 3, 5, 7 and 11 were used in the production 
+  of the histograms pertaining to the absolute error, this was done for the noisy data as 
+  well. The rest of the data not presented in the main body of text is available in the appendix 
+  section (\ref{sec:appendix}).
+
+  The results of the centroiding algorithm in figure \ref{fig:box_3} show a fairly poor 
+  level of accuracy, ranging from a $0\rightarrow 1.5$ pixel error approximately. This lack of accuracy 
+  is especially pronounced the larger the radii of spot, the reason for this increasing 
+  error is due to the spots being larger in the same sized 50x50 images. The radii of the 
+  airy disk that was used to generate the spots is 'physically' larger than the box size 
+  that the centroiding is using. This holds true for the radii that are larger than R1.5 
+  as the box size's diameter, as well as the diameter of the airy disk, is 3 pixels. The further 
+  increase of inaccuracy seen in figure \ref{fig:box_3} R4.00, R5.66 and R8.00 is due to the 
+  3x3 box being placed roughly where the centre of the spot already is, then the algorithm is 
+  ran which in essence takes the average of the intensities. This 3x3 box is not given a reasonable 
+  range of intensities to average over thus the method will be less likely to give the correct answer,
+  this instead gives a range of answers from $0\rightarrow 1.5$ pixels approximately as if the 
+  local maximum finder roughly gives an answer the centroiding algorithm will only give and answer 
+  that is 1.5 pixels off of that guess. Since in this perfect data that only has one spot per image, the 
+  local maximum finder will predict where the spot is to a single pixel of accuracy thus the maximum 
+  error seen should indeed be fractionally larger than 1.5 pixels as observed.
+
   \begin{figure}[H]
     \begin{center}
       \includegraphics[width=0.6\textwidth]{project_pics/distro_centriod_3.png}
     \end{center}
-    \caption{}
+    \caption{Histograms of the absolute error from each radii with a box size of 3x3 pixels. Completed in 0.19s}
     \label{fig:box_3}
   \end{figure}
+
+  In figure \ref{fig:box_3_noise} noisy spot data was provided to test out the algorithms on, 
+  these spot were the same as before but with read noise at 1 electron, average photon number 
+  per spot at 2000 and dark current at 0.1 electron per pixel and cg? Also the number of radii 
+  were reduced, R1.00 and R1.41 were removed. These noise values were chosen 
+  to replicate real world noise levels in order to test all algorithms in isolation from any other 
+  variables so that the spot finding methods could be objectively observed. 
+
+  The noisy data for the 3x3 centroid box size did not have a pronounced impact on average 
+  accuracy per radii. This again is due to the size of the box being small relative to the 
+  size of the spots, thus mostly not allowing the noise to play a part in the calculation of the 
+  centre of the spot. One difference that the noisy data does seem to show is that it gives a more 
+  even spread of answers around it's average, this suggests that although the noisy data 
+  is not changing the average it is having an effect on the centroiding algorithm. The limiting factor 
+  in this case is the box size in which the algorithm is interested in.
 
   \begin{figure}[H]
     \begin{center}
       \includegraphics[width=0.6\textwidth]{project_pics/noise_cen_scatter_3.png}
     \end{center}
-    \caption{}
+    \caption{Histograms of the absolute error from each radii with a box size of 3x3 pixels, also with noise.}
     \label{fig:box_3_noise}
   \end{figure}
   
+
+
+  In figure \ref{fig:box_11} the box size used was 11x11, this increases the sub-pixel localisation 
+  drastically compared to figure \ref{fig:box_3}. The spread of all answers is smaller using 11x11 instead of using 3x3
+  boxes, the spread also changes with radii sequentially getting larger along with the average. 
+  This is due to the larger box size being able to fit 
+  more pixels in to average over effectively, this is clearly evident in the R5.66 and R8.00 histogram as there is a 
+  significant jump in inaccuracy as the radii is still larger than the radii of the box. 
+
   \begin{figure}[H]
     \begin{center}
       \includegraphics[width=0.6\textwidth]{project_pics/distro_centriod_11.png}
     \end{center}
-    \caption{}
+    \caption{Histograms of the absolute error from each radii with a box size of 11x11 pixels.}
     \label{fig:box_11}
   \end{figure}
   
+  In figure \ref{fig:box_11_noise} when centroiding was used on the noisy data with an 11x11 box size, 
+  on average the accuracy decreased as expected and gave a similar average error for each radii apart from R8.00. 
+  Again this will be due to the fact that the R8.00 spot will not fit into the box size being calculated 
+  but also in relation to the spot, as the size of the spot increases so to does the noise in the images 
+  provided.
+
+
   \begin{figure}[H]
     \begin{center}
       \includegraphics[width=0.6\textwidth]{project_pics/noise_cen_scatter_11.png}
     \end{center}
-    \caption{}
+    \caption{Histograms of the absolute error from each radii with a box size of 11x11 pixels, also with noise.}
     \label{fig:box_11_noise}
   \end{figure}
   
+  In figure \ref{fig:box_var_r8} the box size for making the centroiding calculation 
+  was varied from 3 to 49 $\textrm{pixels}^2$ in odd increments, this was tested to understand the 
+  relationship between box size and accuracy. In general the larger the box size the more accuracy 
+  gained this was expected especially for the perfect data as there was only one spot per image, 
+  although this would be impractical for real data as spot are more than likely to be closer than 
+  $\approx 15$ pixels. \textbf{try and talk about the sin nature of the plot}
+
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.5\textwidth]{project_pics/box_size_var_r8.png}
+    \end{center}
+    \caption{Showing the accuracy of centroiding Vs the box size chosen, for a radii or R8.00.}
+    \label{fig:box_var_r8}
+  \end{figure}
+
+  Figure \ref{fig:noise_box_r8}, similar to figure \ref{fig:box_var_r8}, shows the accuracy of the 
+  centroid method against the varying box size, but on a set of noisy data. Here it can be seen that 
+  for a period of box size increases the accuracy also increases, then it minimises and then decreases indefinitely.
+  Presumably this specific box size minimises the error at $\approx 15$ pixels due to the radii being R8.00, 
+  as each spot seems to be most optimised at double it's radii. This makes sense as if the centre is 
+  what the algorithm is looking for then it should look exactly where that spot is ideally, presuming 
+  there are other artefacts in the image like noise. 
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.5\textwidth]{project_pics/box_size_var_noise_r8.png}
+    \end{center}
+    \caption{Showing the accuracy of centroiding Vs the box size chosen, for a radii or R8.00 and with noise}
+    \label{fig:noise_box_r8}
+  \end{figure}
+
+
   
+    
 
   \subsection{Triangle Fitting} % (fold)
   \label{sub:Triangle Fitting}
@@ -443,13 +542,7 @@ Registration No.: \regnumber}
   to compare how the change in spot size changes accuracy.
 
   
-  \begin{figure}[H]
-    \begin{center}
-      \includegraphics[width=0.7\textwidth]{project_pics/single_histo.png}
-    \end{center}
-    \caption{A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}
-    \label{fig:single_histo}
-  \end{figure}
+
   
 
   \begin{figure}[H]
@@ -461,9 +554,7 @@ Registration No.: \regnumber}
   \end{figure}
 
 
-I was also given noisy spot data to test out my algorithm on, these spot were the same 
-as before but with read noise at 1 electron, average photon number per spot at 2000, 
-dark current at 0.1 electron per pixel and cg?
+
 
   \begin{figure}[H]
     \begin{center}
@@ -503,6 +594,8 @@ centre of a spot.
 \section{Conclusion} % (fold)
 \label{sec:Conclusion}
 
+To conclude 
+
 % section :Conclusion (end)
 
 
@@ -517,7 +610,7 @@ centre of a spot.
 \appendix
 
 \section{Appendix}
-
+\label{sec:appendix}
 %%% centroiding appendix part
 
   \begin{figure}[H]

@@ -21,13 +21,13 @@
 \contentsline {subsubsection}{\numberline {3}Triangular method}{5}{}
 \contentsline {section}{\numberline {III}Results and analysis}{8}{}
 \contentsline {subsection}{\numberline {A}Centroiding}{8}{}
-\contentsline {subsection}{\numberline {B}Triangle Fitting}{9}{}
-\contentsline {section}{\numberline {IV}Discussion}{11}{}
-\contentsline {subsection}{\numberline {A}Results in context of my aims}{11}{}
-\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{11}{}
-\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{11}{}
-\contentsline {subsection}{\numberline {D}Discuss improvements}{11}{}
-\contentsline {section}{\numberline {V}Conclusion}{11}{}
-\contentsline {section}{References}{12}{}
+\contentsline {subsection}{\numberline {B}Triangle Fitting}{12}{}
+\contentsline {section}{\numberline {IV}Discussion}{13}{}
+\contentsline {subsection}{\numberline {A}Results in context of my aims}{13}{}
+\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{13}{}
+\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{13}{}
+\contentsline {subsection}{\numberline {D}Discuss improvements}{13}{}
+\contentsline {section}{\numberline {V}Conclusion}{13}{}
+\contentsline {section}{References}{14}{}
 \appendix 
-\contentsline {section}{\numberline {A}Appendix}{13}{}
+\contentsline {section}{\numberline {A}Appendix}{15}{}

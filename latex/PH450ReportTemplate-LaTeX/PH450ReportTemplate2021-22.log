@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  28 MAR 2022 18:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.2.4)  29 MAR 2022 16:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -507,93 +507,105 @@ File: project_pics/flowchart.png Graphic file (type png)
 Package pdftex.def Info: project_pics/flowchart.png  used on input line 387.
 (pdftex.def)             Requested size: 193.47578pt x 529.38615pt.
  [6 <./project_pics/visual_test.png>]
-<project_pics/distro_centriod_3.png, id=58, 462.528pt x 346.896pt>
-File: project_pics/distro_centriod_3.png Graphic file (type png)
-<use project_pics/distro_centriod_3.png>
-Package pdftex.def Info: project_pics/distro_centriod_3.png  used on input line 404.
-(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
- [7 <./project_pics/flowchart.png>]
-<project_pics/noise_cen_scatter_3.png, id=63, 462.528pt x 346.896pt>
-File: project_pics/noise_cen_scatter_3.png Graphic file (type png)
-<use project_pics/noise_cen_scatter_3.png>
-Package pdftex.def Info: project_pics/noise_cen_scatter_3.png  used on input line 412.
-(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
-<project_pics/distro_centriod_11.png, id=64, 462.528pt x 346.896pt>
-File: project_pics/distro_centriod_11.png Graphic file (type png)
-<use project_pics/distro_centriod_11.png>
-Package pdftex.def Info: project_pics/distro_centriod_11.png  used on input line 420.
-(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
- [8 <./project_pics/distro_centriod_3.png> <./project_pics/noise_cen_scatter_3.png>]
-<project_pics/noise_cen_scatter_11.png, id=71, 462.528pt x 346.896pt>
-File: project_pics/noise_cen_scatter_11.png Graphic file (type png)
-<use project_pics/noise_cen_scatter_11.png>
-Package pdftex.def Info: project_pics/noise_cen_scatter_11.png  used on input line 428.
-(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
-<project_pics/single_histo.png, id=72, 462.528pt x 346.896pt>
+<project_pics/single_histo.png, id=58, 462.528pt x 346.896pt>
 File: project_pics/single_histo.png Graphic file (type png)
 <use project_pics/single_histo.png>
-Package pdftex.def Info: project_pics/single_histo.png  used on input line 448.
+Package pdftex.def Info: project_pics/single_histo.png  used on input line 400.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
- [9 <./project_pics/distro_centriod_11.png> <./project_pics/noise_cen_scatter_11.png>]
-<project_pics/distro.png, id=78, 462.528pt x 346.896pt>
+ [7 <./project_pics/flowchart.png>]
+<project_pics/distro_centriod_3.png, id=63, 462.528pt x 346.896pt>
+File: project_pics/distro_centriod_3.png Graphic file (type png)
+<use project_pics/distro_centriod_3.png>
+Package pdftex.def Info: project_pics/distro_centriod_3.png  used on input line 438.
+(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
+ [8 <./project_pics/single_histo.png>]
+<project_pics/noise_cen_scatter_3.png, id=69, 462.528pt x 346.896pt>
+File: project_pics/noise_cen_scatter_3.png Graphic file (type png)
+<use project_pics/noise_cen_scatter_3.png>
+Package pdftex.def Info: project_pics/noise_cen_scatter_3.png  used on input line 461.
+(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
+ [9 <./project_pics/distro_centriod_3.png>]
+<project_pics/distro_centriod_11.png, id=74, 462.528pt x 346.896pt>
+File: project_pics/distro_centriod_11.png Graphic file (type png)
+<use project_pics/distro_centriod_11.png>
+Package pdftex.def Info: project_pics/distro_centriod_11.png  used on input line 478.
+(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
+<project_pics/noise_cen_scatter_11.png, id=75, 462.528pt x 346.896pt>
+File: project_pics/noise_cen_scatter_11.png Graphic file (type png)
+<use project_pics/noise_cen_scatter_11.png>
+Package pdftex.def Info: project_pics/noise_cen_scatter_11.png  used on input line 493.
+(pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
+ [10 <./project_pics/noise_cen_scatter_3.png> <./project_pics/distro_centriod_11.png>]
+<project_pics/box_size_var_r8.png, id=81, 462.528pt x 346.896pt>
+File: project_pics/box_size_var_r8.png Graphic file (type png)
+<use project_pics/box_size_var_r8.png>
+Package pdftex.def Info: project_pics/box_size_var_r8.png  used on input line 509.
+(pdftex.def)             Requested size: 241.84843pt x 181.38736pt.
+<project_pics/box_size_var_noise_r8.png, id=82, 462.528pt x 346.896pt>
+File: project_pics/box_size_var_noise_r8.png Graphic file (type png)
+<use project_pics/box_size_var_noise_r8.png>
+Package pdftex.def Info: project_pics/box_size_var_noise_r8.png  used on input line 525.
+(pdftex.def)             Requested size: 241.84843pt x 181.38736pt.
+ [11 <./project_pics/noise_cen_scatter_11.png> <./project_pics/box_size_var_r8.png>]
+<project_pics/distro.png, id=88, 462.528pt x 346.896pt>
 File: project_pics/distro.png Graphic file (type png)
 <use project_pics/distro.png>
-Package pdftex.def Info: project_pics/distro.png  used on input line 457.
+Package pdftex.def Info: project_pics/distro.png  used on input line 550.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
-<project_pics/distro_noise.png, id=79, 462.528pt x 346.896pt>
+<project_pics/distro_noise.png, id=89, 462.528pt x 346.896pt>
 File: project_pics/distro_noise.png Graphic file (type png)
 <use project_pics/distro_noise.png>
-Package pdftex.def Info: project_pics/distro_noise.png  used on input line 470.
+Package pdftex.def Info: project_pics/distro_noise.png  used on input line 561.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
- [10 <./project_pics/single_histo.png> <./project_pics/distro.png>] (./PH450ReportTemplate2021-22.bbl [11 <./project_pics/distro_noise.png>]) [12]
-<project_pics/distro_centriod_5.png, id=92, 462.528pt x 346.896pt>
+ [12 <./project_pics/box_size_var_noise_r8.png> <./project_pics/distro.png>] (./PH450ReportTemplate2021-22.bbl [13 <./project_pics/distro_noise.png>]) [14]
+<project_pics/distro_centriod_5.png, id=103, 462.528pt x 346.896pt>
 File: project_pics/distro_centriod_5.png Graphic file (type png)
 <use project_pics/distro_centriod_5.png>
-Package pdftex.def Info: project_pics/distro_centriod_5.png  used on input line 525.
+Package pdftex.def Info: project_pics/distro_centriod_5.png  used on input line 618.
 (pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
-<project_pics/noise_cen_scatter_5.png, id=93, 462.528pt x 346.896pt>
+<project_pics/noise_cen_scatter_5.png, id=104, 462.528pt x 346.896pt>
 File: project_pics/noise_cen_scatter_5.png Graphic file (type png)
 <use project_pics/noise_cen_scatter_5.png>
-Package pdftex.def Info: project_pics/noise_cen_scatter_5.png  used on input line 533.
+Package pdftex.def Info: project_pics/noise_cen_scatter_5.png  used on input line 626.
 (pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
-<project_pics/distro_centriod_7.png, id=94, 462.528pt x 346.896pt>
+<project_pics/distro_centriod_7.png, id=105, 462.528pt x 346.896pt>
 File: project_pics/distro_centriod_7.png Graphic file (type png)
 <use project_pics/distro_centriod_7.png>
-Package pdftex.def Info: project_pics/distro_centriod_7.png  used on input line 541.
+Package pdftex.def Info: project_pics/distro_centriod_7.png  used on input line 634.
 (pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
- [13 <./project_pics/distro_centriod_5.png> <./project_pics/noise_cen_scatter_5.png>]
-<project_pics/noise_cen_scatter_7.png, id=100, 462.528pt x 346.896pt>
+ [15 <./project_pics/distro_centriod_5.png> <./project_pics/noise_cen_scatter_5.png>]
+<project_pics/noise_cen_scatter_7.png, id=111, 462.528pt x 346.896pt>
 File: project_pics/noise_cen_scatter_7.png Graphic file (type png)
 <use project_pics/noise_cen_scatter_7.png>
-Package pdftex.def Info: project_pics/noise_cen_scatter_7.png  used on input line 549.
+Package pdftex.def Info: project_pics/noise_cen_scatter_7.png  used on input line 642.
 (pdftex.def)             Requested size: 290.22107pt x 217.67754pt.
-<project_pics/single_test.png, id=101, 462.528pt x 346.896pt>
+<project_pics/single_test.png, id=112, 462.528pt x 346.896pt>
 File: project_pics/single_test.png Graphic file (type png)
 <use project_pics/single_test.png>
-Package pdftex.def Info: project_pics/single_test.png  used on input line 558.
+Package pdftex.def Info: project_pics/single_test.png  used on input line 651.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
- [14 <./project_pics/distro_centriod_7.png> <./project_pics/noise_cen_scatter_7.png>]
-<project_pics/no_noise_all_r.png, id=108, 462.528pt x 346.896pt>
+ [16 <./project_pics/distro_centriod_7.png> <./project_pics/noise_cen_scatter_7.png>]
+<project_pics/no_noise_all_r.png, id=118, 462.528pt x 346.896pt>
 File: project_pics/no_noise_all_r.png Graphic file (type png)
 <use project_pics/no_noise_all_r.png>
-Package pdftex.def Info: project_pics/no_noise_all_r.png  used on input line 566.
+Package pdftex.def Info: project_pics/no_noise_all_r.png  used on input line 659.
 (pdftex.def)             Requested size: 338.58632pt x 253.95184pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 574.
- [15 <./project_pics/single_test.png> <./project_pics/no_noise_all_r.png>] [16] (./PH450ReportTemplate2021-22.aux) ) 
+(Font)              <10.95> on input line 667.
+ [17 <./project_pics/single_test.png> <./project_pics/no_noise_all_r.png>] [18] (./PH450ReportTemplate2021-22.aux) ) 
 Here is how much of TeX's memory you used:
- 8953 strings out of 478353
- 135441 string characters out of 5854636
- 478574 words of memory out of 5000000
- 26896 multiletter control sequences out of 15000+600000
+ 8969 strings out of 478353
+ 136004 string characters out of 5854636
+ 478624 words of memory out of 5000000
+ 26910 multiletter control sequences out of 15000+600000
  457305 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,12n,77p,734b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,12n,77p,734b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on PH450ReportTemplate2021-22.pdf (21 pages, 2695485 bytes).
+Output written on PH450ReportTemplate2021-22.pdf (23 pages, 2879224 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
+ 191 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
