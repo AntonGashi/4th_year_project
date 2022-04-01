@@ -147,7 +147,7 @@ Registration No.: \regnumber}
 \pagenumbering{arabic}
 
 \section{Introduction}
-
+\label{sec:intro}
   \subsection{Sub-Pixel Localisation} % (fold)
   \label{sub:spot-finding intro}
   
@@ -397,7 +397,7 @@ Registration No.: \regnumber}
 
     \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.7\textwidth]{project_pics/single_histo.png}
+      \includegraphics[width=0.6\textwidth]{project_pics/single_histo.png}
     \end{center}
     \caption{A: Absolute error from the ground-truth for R1.00, B: A histogram of errors from graph A}
     \label{fig:single_histo}
@@ -414,7 +414,9 @@ Registration No.: \regnumber}
   For the centroiding method box sizes of 3, 5, 7 and 11 were used in the production 
   of the histograms pertaining to the absolute error, this was done for the noisy data as 
   well. The rest of the data not presented in the main body of text is available in the appendix 
-  section (\ref{sec:appendix}).
+  section (\ref{sec:appendix}). In all figures for centroiding, all of the combined histograms had 
+  taken $\approx 1.4\cdot 10^{-4}$ seconds for all radii and all 100 images in the TIFF stack. This means per 
+  spot the time taken to calculate and answer was $\approx 2\cdot 10^{-5}$ seconds
 
   The results of the centroiding algorithm in figure \ref{fig:box_3} show a fairly poor 
   level of accuracy, ranging from a $0\rightarrow 1.5$ pixel error approximately. This lack of accuracy 
@@ -437,7 +439,7 @@ Registration No.: \regnumber}
     \begin{center}
       \includegraphics[width=0.6\textwidth]{project_pics/distro_centriod_3.png}
     \end{center}
-    \caption{Histograms of the absolute error from each radii with a box size of 3x3 pixels. Completed in 0.19s}
+    \caption{Histograms of the absolute error from each radii with a box size of 3x3 pixels. Completed in $\approx 1.4\cdot 10^{-4}$s}
     \label{fig:box_3}
   \end{figure}
 
@@ -496,54 +498,55 @@ Registration No.: \regnumber}
     \label{fig:box_11_noise}
   \end{figure}
   
-  In figure \ref{fig:box_var_r8} the box size for making the centroiding calculation 
-  was varied from 3 to 49 $\textrm{pixels}^2$ in odd increments, this was tested to understand the 
+  In figure \ref{fig:box_var_r2} the box size for making the centroiding calculation 
+  was varied from 3 to 15 $\textrm{pixels}^2$ in odd increments, this was tested to understand the 
   relationship between box size and accuracy. In general the larger the box size the more accuracy 
   gained this was expected especially for the perfect data as there was only one spot per image, 
   although this would be impractical for real data as spot are more than likely to be closer than 
-  $\approx 15$ pixels. \textbf{try and talk about the sin nature of the plot}
-
+  $\approx 15$ pixels. 
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.5\textwidth]{project_pics/box_size_var_r8.png}
+      \includegraphics[width=0.5\textwidth]{project_pics/box_size_var_r2.png}
     \end{center}
-    \caption{Showing the accuracy of centroiding Vs the box size chosen, for a radii or R8.00.}
-    \label{fig:box_var_r8}
+    \caption{Showing the accuracy of centroiding Vs the box size chosen, for a radii or R2.00.}
+    \label{fig:box_var_r2}
   \end{figure}
 
-  Figure \ref{fig:noise_box_r8}, similar to figure \ref{fig:box_var_r8}, shows the accuracy of the 
+  Figure \ref{fig:noise_box_r2}, similar to figure \ref{fig:box_var_r2}, shows the accuracy of the 
   centroid method against the varying box size, but on a set of noisy data. Here it can be seen that 
   for a period of box size increases the accuracy also increases, then it minimises and then decreases indefinitely.
-  Presumably this specific box size minimises the error at $\approx 15$ pixels due to the radii being R8.00, 
-  as each spot seems to be most optimised at double it's radii. This makes sense as if the centre is 
-  what the algorithm is looking for then it should look exactly where that spot is ideally, presuming 
-  there are other artefacts in the image like noise. 
+  This specific box size minimises the error at $\approx 9$ pixels due to the radii being R2.00, 
+  as each spot size will be optimised at a certain box size that's more than double it's radii. For noisy spots 
+  this optimisation can not be too large as the centroiding algorithm is known for being highly sensitive. \cite{delabie2014accurate}
+
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.5\textwidth]{project_pics/box_size_var_noise_r8.png}
+      \includegraphics[width=0.5\textwidth]{project_pics/box_size_var_r2_noise.png}
     \end{center}
-    \caption{Showing the accuracy of centroiding Vs the box size chosen, for a radii or R8.00 and with noise}
-    \label{fig:noise_box_r8}
+    \caption{Showing the accuracy of centroiding Vs the box size chosen, for a radii or R2.00 and with noise}
+    \label{fig:noise_box_r2}
   \end{figure}
 
-
-  
-    
 
   \subsection{Triangle Fitting} % (fold)
   \label{sub:Triangle Fitting}
 
-  In figure \ref{fig:single_test} it can be seen that while using simulated data the mean accuracy of the 
-  localisation is ~0.4 of a pixel whilst being executed in ~0.34s.
-
-  Part C of figure \ref{fig:single_test} has been replicated for all simulated spots given in figure \ref{fig:no_noise_all_r}
+  In figure \ref{fig:single_test} it can be seen that while using simulated data of radii R1.00, the mean accuracy of the 
+  localisation is $\approx 0.4$ of a pixel whilst being executed in $\approx 0.34$ seconds. This time to complete a computation 
+  was the same for all individual radii, for all the data the time taken was $\approx 2.4$ seconds. This means an 
+  average time to calculate a spot using the triangle method takes $\approx 3.3\cdot 10^{-3}$ seconds.Part C of 
+  figure \ref{fig:single_test} has been replicated for all simulated spots given in figure \ref{fig:no_noise_all_r}
   to compare how the change in spot size changes accuracy.
-
-  
-
-  
+  Figure \ref{fig:distro} shows the histogram results of the triangle fitting method on the perfect simulated data. 
+  Compared with the 3x3 centroiding method (figure \ref{fig:box_3}) the average accuracy of this method is better, especially for the 
+  larger radii, ranging from a $\approx 1.33\rightarrow 2.6$ times improvement. This comes at a $\approx 160$ times 
+  increase in computational time to produce an answer however. A reason for this apparent increase in accuracy will be 
+  because of the fact that the box size is limiting the amount of the image the centroiding method can calculate over.
+  If this method is compared with the 11x11 centroiding method (figure \ref{fig:box_11}) then there is a substantial 
+  difference in average accuracy, ranging from $\approx 19 \rightarrow 1.25$ times better accuracy for the centroiding 
+  method whilst also still having a $\approx 160$ times computational speed advantage.
 
   \begin{figure}[H]
     \begin{center}
@@ -553,8 +556,12 @@ Registration No.: \regnumber}
     \label{fig:distro}
   \end{figure}
 
-
-
+  As can be seen in figure \ref{fig:distro_noise}, compared with figure \ref{fig:distro}, the distribution
+  of results is shifted towards being less accurate. This is expected as noise adds randomness and 
+  variability into the system, giving extra information that does not aid in the process of finding the 
+  centre of a spot. If figure \ref{fig:distro_noise} is compared with figure \ref{fig:box_11_noise}, again, 
+  it can be seen that the centroiding method achieves better results, ranging from $\approx 1.5\rightarrow 2$
+  times more accurate than the triangle method and again being $\approx 160$ times faster.
 
   \begin{figure}[H]
     \begin{center}
@@ -564,37 +571,81 @@ Registration No.: \regnumber}
     \label{fig:distro_noise}
   \end{figure}
 
-As can be seen in figure \ref{fig:distro_noise}, compared with figure \ref{fig:distro}, the distribution
-of results is shifted towards being less accurate. This is expected as noise adds randomness and 
-variability into the system, giving extra information that does not aid in the process of finding the 
-centre of a spot. 
-  
-  
-      
 
 \section{Discussion} % (fold)
 \label{sec:Discussion}
 
 
-  \subsection{Results in context of my aims} % (fold)
-  \label{sub:Results in context of my aims}
-
   \subsection{Results in comparison with other studies/industry standard} % (fold)
   \label{sub:Results in comparison with other studies/industry standard}
   
+  In a paper by delabie et al. \cite{delabie2014accurate} known algorithms for spot finding were compiled 
+  and tested for accuracy and efficiency, this includes variations of the centroid and Gaussian fit methods.
+  The method used for centroiding that was used to test against the triangle method in this paper was attained 
+  from delabie et al. \cite{delabie2014accurate} and was referred to as the centre of gravity method. In which when 
+  it was tested it was found to take in the range of $0.055\rightarrow 0.253\cdot 10^{-6}$ seconds to calculate 
+  the position of one star. This is in contrast with the time taken to calculate a single spot in this paper which 
+  took $\approx 2\cdot 10^{-5}$ seconds, that's a $\approx 360\rightarrow 80$ times increase in elapsed 
+  time. Comparing figure \ref{fig:box_var_r2} with figure 4 in the delabie et al. \cite{delabie2014accurate},
+  star tracker data was used from the Plato mission which had had very little noise and gave very accurate estimates. 
+  In comparison with figure \ref{fig:box_var_r2}, delabie et al. results had the same overall trend of gaining in accuracy 
+  as box size increased, however the results that figure \ref{fig:box_var_r2} generated were larger in error. At it's 
+  minimum error the centroiding algorithm employed here gave a result of $\approx 0.26$, while the minimum error 
+  in the delabie et al. paper gave a result of $\approx 0.012$. 
+  Now comparing figure \ref{fig:noise_box_r2} with figures 2 \& 3 in delabie et al. \cite{delabie2014accurate}, again 
+  it can be seen that the general trend of the plots follows what was recreated here. In figure \ref{fig:noise_box_r2} 
+  the minimum error achieved is $\approx 0.32$ with a box size of 7, in delabie et al. the minimum errors in figure 
+  2 \& 3 are both $\approx 0.1$ whilst using a box size of 7. A reason for the discrepancy in both results may be due 
+  to the data used, as for the centroiding methods, accuracy seems to be dependant the spot size in relation to the 
+  box size. 
+
+  A reason for the centroiding method and triangle method used in this paper being slower that others may 
+  be due to the fact that the code for this paper was written in python, where as the centroiding method used in 
+  delabie et al. was written in C$++$. Elapsed time test results taken from a website that poses the question 
+  Which programming language is the fastest?\cite{bagley}, range from $\approx 2.5\rightarrow 95$ times 
+  less time taken for C$++$ over python. This is however dependant on what is being ran, for example the largest 
+  gap in elapsed time was from a symplectic-integrator that modeled planets and the smallest gap was from a program 
+  that takes in strings of amino acid protein sequences and formats them. This means that what specific operations 
+  are carried out on either language play a role in how fast the program runs, in part due to the fact that 
+  python is an interpreted language whilst C$++$ is a compiled language.
+  Another reason for this papers shortfall in computational time taken may be due to the use of python 
+  packages used, this includes pandas, matplotlib, scipy, tifffile and others need to be called from 
+  a different file. An improvement could be defining the functions that are used in the same file they are 
+  being used in.
+
+
   \subsection{Explanations for unexpected results} % (fold)
   \label{sub:Explanations for unexpected results}
   
-  \subsection{Discuss improvements} % (fold)
-  \label{sub:Discuss improvement}
+  The elapsed time difference between the centroiding method and the triangle method were to be expected 
+  from the outset, as the centroiding method has been used for star tracking from $1975 \rightarrow 1978$ and only 
+  relies on two multiplications, two divisions and four summations to provide an answer. Centroiding is also 
+  considered to be the fastest spot finding method.\cite{delabie2014accurate}
 
+  \subsection{Future work} % (fold)
+  \label{sub:Discuss improvement}
+  
+  
 % subsection subsection name (end)
 
 
 \section{Conclusion} % (fold)
 \label{sec:Conclusion}
 
-To conclude 
+  To conclude a spot finding method was created and others were replicated in order to compare 
+  accuracy and time taken. In section \ref{sec:intro} important concepts about sub-pixel localisation 
+  were discussed to give an overarching view what it is and why this paper was trying to improve it 
+  in some manner. In section \ref{sec:Methods} the procedures that were carried out like centroiding 
+  and the Gaussian fitting method were explained step by step to understand the apparent costs and benefits 
+  of well understood and common place algorithms. Furthermore a new method was created and discussed in order 
+  to align with the motivation behind the study of trying to produce a method that is still fast in terms 
+  of time taken to give an answer but also more accurate than an algorithm like centroiding. In section \ref{sec:Results}
+  the centroiding and triangle algorithms were tested with spot data provided, for the simulated perfect data this resulted 
+  in the centroiding algorithm predictably being faster (160 times) and being more accurate ($\approx 19\rightarrow 1.25$ times) 
+  except from the case of the 3x3 box size where the triangle method has better accuracy ($\approx 1.33\rightarrow 2.6$ times).
+  In the case of the simulated noisy data, again, the centroiding method takes the advantage with results more 
+  accurate ($\approx 1.5\rightarrow 2$ times).
+  
 
 % section :Conclusion (end)
 

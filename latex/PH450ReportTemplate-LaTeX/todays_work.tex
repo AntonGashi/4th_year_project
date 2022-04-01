@@ -1,69 +1,27 @@
-       Once the triangle algorithm was implemented it was tested on TIFF stacks of 100 images 
-    of perfect spot data. The absolute error (Euclidean distance) was calculated from each 
-    axis and plotted as seen in figure \ref{fig:single_histo} A. In image B a histogram 
-    was produced so that the spread was more visible.
+  A reason for the centroiding method and triangle method used in this paper being slower that others may 
+  be due to the fact that the code for this paper was written in python, where as the centroiding method used in 
+  delabie et al. was written in C$++$. Elapsed time test results taken from a website that poses the question 
+  Which programming language is the fastest?\cite{bagley}, range from a $\approx 2.5\rightarrow 95$ times 
+  less time taken for C$++$ over python. This is however dependant on what is being ran, for example the largest 
+  gap in elapsed time was from a symplectic-integrator that modeled planets and the smallest gap was from a program 
+  that takes in strings of amino acid protein sequences and formats them.   Another reason for this papers shortfall in computational time taken may be due to the use of python 
+  packages used, this includes pandas, matplotlib, scipy, tifffile and others need to be called from 
+  a different file. An improvement could be defining the functions that are used in the same file they are 
+  being used in. This means that what specific operations 
+  are carried out on either language play a role in how fast the program runs, in part due to the fact that 
+  python is an interpreted language whilst C$++$ is a compiled language. Centroiding is also 
+  considered to be the fastest spot finding method.\cite{delabie2014accurate}  To conclude a spot finding method was created and others were replicated in order to compare 
+  accuracy and time taken.   To conclude a spot finding method was created and others were replicated in order to compare 
+  accuracy and time taken. In section \ref{sec:intro} important concepts about sub-pixel localisation 
+  were discussed to give an overarching view what it is and why this paper was trying to improve it 
+  in some manner. In section \ref{sec:Methods} the procedures that were carried out like centroiding 
+  and the Gaussian fitting method were explained step by step to understand the apparent costs and benefits 
+  of well understood and common place algorithms. Furthermore a new method was created and discussed in order 
+  to align with the motivation behind the study of trying to produce a method that is still fast in terms 
+  of time taken to give an answer but also more accurate than an algorithm like centroiding. In section \ref{sec:Results}
+  the centroiding and triangle algorithms were tested with spot data provided, for the simulated perfect data this resulted 
+  in the centroiding algorithm predictably being faster (160 times) and being more accurate ($\approx 19\rightarrow 1.25$ times) 
+  except from the case of the 3x3 box size where the triangle method has better accuracy ($\approx 1.33\rightarrow 2.6$ times).
+  In the case of the simulated noisy data, again, the centroiding method takes the advantage with results more 
+  accurate ($\approx 1.5\rightarrow 2$ times).
 
-   For the centroiding method box sizes of 3, 5, 7 and 11 were used in the production 
-  of the histograms pertaining to the absolute error, this was done for the noisy data as 
-  well. The rest of the data not presented in the main body of text is available in the appendix 
-  section (\ref{sec:appendix}).
-
- The results of the centroiding algorithm in figure \ref{fig:box_3} show a fairly poor 
-  level of accuracy, ranging from a $0\rightarrow 1.5$ pixel error approximately. This lack of accuracy 
-  is especially pronounced the larger the radii of spot, the reason for this increasing 
-  error is due to the spots being larger in the same sized 50x50 images. The radii of the 
-  airy disk that was used to generate the spots is 'physically' larger than the box size 
-  that the centroiding is using. This holds true for the radii that are larger than R1.5 
-  as the box size's diameter, as well as the diameter of the airy disk, is 3 pixels. The further 
-  increase of inaccuracy seen in figure \ref{fig:box_3} R4.00, R5.66 and R8.00 is due to the 
-  3x3 box being placed roughly where the centre of the spot already is, then the algorithm is 
-  ran which in essence takes the average of the intensities. This 3x3 box is not given a reasonable 
-  range of intensities to average over thus the method will be less likely to give the correct answer,
-  this instead gives a range of answers from $0\rightarrow 1.5$ pixels approximately as if the 
-  local maximum finder roughly gives an answer the centroiding algorithm will only give and answer 
-  that is 1.5 pixels off of that guess. Since in this perfect data that only has one spot per image, the 
-  local maximum finder will predict where the spot is to a single pixel of accuracy thus the maximum 
-  error seen should indeed be fractionally larger than 1.5 pixels as observed.
-
-  In figure \ref{fig:box_3_noise} noisy spot data was provided to test out the algorithms on, 
-  these spot were the same as before but with read noise at 1 electron, average photon number 
-  per spot at 2000 and dark current at 0.1 electron per pixel and cg? Also the number of radii 
-  were reduced, R1.00 and R1.41 were removed. These noise values were chosen 
-  to replicate real world noise levels in order to test all algorithms in isolation from any other 
-  variables so that the spot finding methods could be objectively observed. 
-
-  The noisy data for the 3x3 centroid box size did not have a pronounced impact on average 
-  accuracy per radii. This again is due to the size of the box being small relative to the 
-  size of the spots, thus mostly not allowing the noise to play a part in the calculation of the 
-  centre of the spot. One difference that the noisy data does seem to show is that it gives a more 
-  even spread of answers around it's average, this suggests that although the noisy data 
-  is not changing the average it is having an effect on the centroiding algorithm. The limiting factor 
-  in this case is the box size in which the algorithm is interested in.
-
-  In figure \ref{fig:box_11} the box size used was 11x11, this increases the sub-pixel localisation 
-  drastically compared to figure \ref{fig:box_3}. The spread of all answers is smaller using 11x11 instead of using 3x3
-  boxes, the spread also changes with radii sequentially getting larger along with the average. 
-  This is due to the larger box size being able to fit 
-  more pixels in to average over effectively, this is clearly evident in the R5.66 and R8.00 histogram as there is a 
-  significant jump in inaccuracy as the radii is still larger than the radii of the box. 
-
-  In figure \ref{fig:box_11_noise} when centroiding was used on the noisy data with an 11x11 box size, 
-  on average the accuracy decreased as expected and gave a similar average error for each radii apart from R8.00. 
-  Again this will be due to the fact that the R8.00 spot will not fit into the box size being calculated 
-  but also in relation to the spot, as the size of the spot increases so to does the noise in the images 
-  provided.
-
-  In figure \ref{fig:box_var_r8} the box size for making the centroiding calculation 
-  was varied from 3 to 49 $\textrm{pixels}^2$ in odd increments, this was tested to understand the 
-  relationship between box size and accuracy. In general the larger the box size the more accuracy 
-  gained this was expected especially for the perfect data as there was only one spot per image, 
-  although this would be impractical for real data as spot are more than likely to be closer than 
-  $\approx 15$ pixels. 
-
-  Figure \ref{fig:noise_box_r8}, similar to figure \ref{fig:box_var_r8}, shows the accuracy of the 
-  centroid method against the varying box size, but on a set of noisy data. Here it can be seen that 
-  for a period of box size increases the accuracy also increases, then it minimises and then decreases indefinitely.
-  Presumably this specific box size minimises the error at $\approx 15$ pixels due to the radii being R8.00, 
-  as each spot seems to be most optimised at double it's radii. This makes sense as if the centre is 
-  what the algorithm is looking for then it should look exactly where that spot is ideally, presuming 
-  there are other artefacts in the image like noise. 

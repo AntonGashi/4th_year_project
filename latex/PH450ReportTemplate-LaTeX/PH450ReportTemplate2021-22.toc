@@ -22,12 +22,11 @@
 \contentsline {section}{\numberline {III}Results and analysis}{8}{}
 \contentsline {subsection}{\numberline {A}Centroiding}{8}{}
 \contentsline {subsection}{\numberline {B}Triangle Fitting}{12}{}
-\contentsline {section}{\numberline {IV}Discussion}{13}{}
-\contentsline {subsection}{\numberline {A}Results in context of my aims}{13}{}
-\contentsline {subsection}{\numberline {B}Results in comparison with other studies/industry standard}{13}{}
-\contentsline {subsection}{\numberline {C}Explanations for unexpected results}{13}{}
-\contentsline {subsection}{\numberline {D}Discuss improvements}{13}{}
-\contentsline {section}{\numberline {V}Conclusion}{13}{}
-\contentsline {section}{References}{14}{}
+\contentsline {section}{\numberline {IV}Discussion}{14}{}
+\contentsline {subsection}{\numberline {A}Results in comparison with other studies/industry standard}{14}{}
+\contentsline {subsection}{\numberline {B}Explanations for unexpected results}{14}{}
+\contentsline {subsection}{\numberline {C}Future work}{15}{}
+\contentsline {section}{\numberline {V}Conclusion}{15}{}
+\contentsline {section}{References}{16}{}
 \appendix 
-\contentsline {section}{\numberline {A}Appendix}{15}{}
+\contentsline {section}{\numberline {A}Appendix}{17}{}

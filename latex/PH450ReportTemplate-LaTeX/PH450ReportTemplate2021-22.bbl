@@ -68,4 +68,10 @@ Alex Small and Shane Stahlheber.
 \newblock Fluorophore localization algorithms for super-resolution microscopy.
 \newblock {\em Nature methods}, 11(3):267--279, 2014.
 
+\bibitem{bagley}
+Doug Bagley.
+\newblock Which programming language is fastest?, 2001.
+\newblock
+  https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html.
+
 \end{thebibliography}
