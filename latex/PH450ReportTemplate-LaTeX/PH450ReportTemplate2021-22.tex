@@ -14,6 +14,8 @@
 \usepackage{blindtext} % used to make some example junk text
 \usepackage{physics} % very useful for typesetting physics equations
 \usepackage{float}
+\usepackage{hyperref}
+
 \def\bibsection{\section*{\refname}} %Sorts out reference section and gets rid of horizontal line
 \bibliographystyle{acm}
 \usepackage{titlesec}
@@ -110,10 +112,25 @@ Registration No.: \regnumber}
 \section*{Abstract} %The * suppresses a section number
 \addcontentsline{toc}{section}{Abstract}
 
+Sub-pixel localisation and spot finding are methods employed in several different areas of research and innovation
+like microscopy, small form factor satellites and in some cases LIDAR (Light Detection and Ranging). During this 
+project a new method for spot finding was developed and tested against industry standard techniques in order 
+to improve accuracy whilst also reduce computational time, this task is in the context of algorithms that need 
+to be resource efficient but better accuracy than previous methods. The method proposed is similar to a Gaussian 
+fitting method but with less computational complexity. This method tries to fit a triangle function overtop a spot 
+of light that follows a point spread function in order to find the centre of that spot of light. This new method, 
+compared to centroiding, was unfortunately marginally less accurate in most applications and much slower also, 
+however it does show some promise in places where centroiding usually fails like in high noise situations and 
+where box size limitations are a factor. This method shows potential and steps should be carried out 
+in order to further the accuracy.
+
 \newpage
 \section*{Acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgements}
 
+Firstly I would like to thank both my supervisors Dr Sebastian Van De Linde and Dr Daniel Oi, 
+they were both great at helping, guiding and supporting me through this project. I would also like 
+to thank my friends and family who were always there to be relied on if and when needed. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Do not alter this section %
@@ -143,6 +160,8 @@ Registration No.: \regnumber}
 
 %%%%% Main Report Starts Here %%%%%
 
+
+
 \newpage
 \pagenumbering{arabic}
 
@@ -159,7 +178,7 @@ Registration No.: \regnumber}
   is single-molecule microscopy, in which molecules are individually fluoresced and 
   imaged instead of ensembles which helps distinguish more detail and produce better
   results than the diffraction limit.
-  There are two ways that this general method have been implemented; photo-activated localization
+  There are two ways that this general method have been implemented; photo-activated localisation
   microscopy(PALM) and stochastic optical reconstruction microscopy(STORM), both
   rely on fluorophores which are fluorescent chemicals that re-emit light after
   being excited. This helps as the fluorescence emits the light 
@@ -241,11 +260,13 @@ Registration No.: \regnumber}
   \subsection{Motivation} % (fold)
   \label{sub:Motivation}
   
-  The main motivation behind my project is to improve the compute time that it
-  takes to render images through sub-pixel localisation whilst keeping an
-  acceptable level of accuracy. That is to say this project should be aiming to
+
+  The main motivation behind my project is to improve the accuracy of spot finding methods 
+  whilst keeping the computational time to a minimum. That is to say this project should be aiming to
   produce a method of spot-finding that either less complex, less computations
-  per localisation, fewer steps or a mixture of all. 
+  per localisation, fewer steps or a mixture of all. This method will be tested against 
+  centroiding, an algorithm known for obtaining good results quickly. Additionally another
+  motivation is to create a method that is particularly resistant to background noise. 
 
   The applications of spot finding reach far beyond localisation microscopy it 
   can be used in other technologies, for example a paper published by Castorena and Creusere \cite{6638050}
@@ -279,19 +300,6 @@ Registration No.: \regnumber}
   imaged. 
 
   \textbf{still need to add more technologies that use spot localisation}
-  
-  \subsection{Literature Review (don't call it literature review)} % (fold)
-  \label{sub:Literature Review (don't call it literature review)}
-  
-  
-  The field of spot finding or star finding is a fairly recent field with papers
-  coming out in the mid 80's from NASA. However the methods haven't changed that
-  much since the main algorithm still used is centroiding since it's a very good
-  compromise between quickness and accuracy being that it can give an answer in
-  the 1-100 microsecond range \cite{delabie2014accurate}. Much of the innovation
-  has come from optimising the algorithm or optimising the data going into the
-  algorithm. 
-
 
 \section{Methods} % (fold)
 \label{sec:Methods}
@@ -306,7 +314,7 @@ Registration No.: \regnumber}
   algorithms, this is when a subsection of pixels are considered to be a star
   using a rough calculation. The area of interest is then filtered in such a way
   that reduces noise and aberrations, finally apply the algorithm in this case
-  it's the center of gravity method (\ref{eq1})(or the moment
+  it's the centre of gravity method (\ref{eq1})(or the moment
   method)\cite{delabie2014accurate}\cite{stone1989comparison}.
   \begin{equation}\label{eq1}
       (x_b,y_b) = \left( {\frac{\sum_{ij} I_{ij}x_{ij}}{\sum_{ij} I_{ij}},\frac{\sum_{ij} I_{ij}y_{ij}}{\sum_{ij} I_{ij}}}\right)
@@ -576,9 +584,6 @@ Registration No.: \regnumber}
 \label{sec:Discussion}
 
 
-  \subsection{Results in comparison with other studies/industry standard} % (fold)
-  \label{sub:Results in comparison with other studies/industry standard}
-  
   In a paper by delabie et al. \cite{delabie2014accurate} known algorithms for spot finding were compiled 
   and tested for accuracy and efficiency, this includes variations of the centroid and Gaussian fit methods.
   The method used for centroiding that was used to test against the triangle method in this paper was attained 
@@ -597,7 +602,10 @@ Registration No.: \regnumber}
   the minimum error achieved is $\approx 0.32$ with a box size of 7, in delabie et al. the minimum errors in figure 
   2 \& 3 are both $\approx 0.1$ whilst using a box size of 7. A reason for the discrepancy in both results may be due 
   to the data used, as for the centroiding methods, accuracy seems to be dependant the spot size in relation to the 
-  box size. 
+  box size. The elapsed time difference between the centroiding method and the triangle method were to be expected 
+  from the outset, as the centroiding method has been used for star tracking from $1975 \rightarrow 1978$ and only 
+  relies on two multiplications, two divisions and four summations to provide an answer. Centroiding is also 
+  considered to be the fastest spot finding method.\cite{delabie2014accurate}
 
   A reason for the centroiding method and triangle method used in this paper being slower that others may 
   be due to the fact that the code for this paper was written in python, where as the centroiding method used in 
@@ -613,18 +621,17 @@ Registration No.: \regnumber}
   a different file. An improvement could be defining the functions that are used in the same file they are 
   being used in.
 
+  A potential reason for the lack of accuracy in the method created could be attributed to the fact that 
+  this method is a worse approximation of a spot than a Gaussian or an airy function. While these other 
+  methods map more closely to a PSF, of which a diffraction limited point source of light follows, the triangle 
+  method either over or under laps the shape of the spot (seen in figure \ref{fig:visual_test_2} \& \ref{fig:visual_test}) 
+  possibly making a fitting function produce the errors observed.
 
-  \subsection{Explanations for unexpected results} % (fold)
-  \label{sub:Explanations for unexpected results}
-  
-  The elapsed time difference between the centroiding method and the triangle method were to be expected 
-  from the outset, as the centroiding method has been used for star tracking from $1975 \rightarrow 1978$ and only 
-  relies on two multiplications, two divisions and four summations to provide an answer. Centroiding is also 
-  considered to be the fastest spot finding method.\cite{delabie2014accurate}
 
   \subsection{Future work} % (fold)
   \label{sub:Discuss improvement}
   
+
   
 % subsection subsection name (end)
 
@@ -644,8 +651,13 @@ Registration No.: \regnumber}
   in the centroiding algorithm predictably being faster (160 times) and being more accurate ($\approx 19\rightarrow 1.25$ times) 
   except from the case of the 3x3 box size where the triangle method has better accuracy ($\approx 1.33\rightarrow 2.6$ times).
   In the case of the simulated noisy data, again, the centroiding method takes the advantage with results more 
-  accurate ($\approx 1.5\rightarrow 2$ times).
-  
+  accurate ($\approx 1.5\rightarrow 2$ times). Additionally in section \ref{sec:Discussion} we discussed potential 
+  reasons on why the method created and other methods used perform worse than methods executed in cited papers. 
+  Following this critique in section \ref{sub:Discuss improvement} improvements were discussed that will be investigated 
+  further in future work to be conducted. Overall, even though the method created failed to produce better results 
+  than initially hoped, it still shows promise and demands further study. During the process of this paper I have 
+  greatly expanded my knowledge of microscopy, fluorescence, computing and in general how to develop methods to 
+  try and solve problems. 
 
 % section :Conclusion (end)
 
@@ -663,6 +675,9 @@ Registration No.: \regnumber}
 \section{Appendix}
 \label{sec:appendix}
 %%% centroiding appendix part
+
+  All code developed or used for this project is available on GitHub along with the spot data generated.
+  \url{https://github.com/AntonGashi/4th_year_project}
 
   \begin{figure}[H]
     \begin{center}
