@@ -1,4 +1,0 @@
-rn = 1;(* read noise (e) *)
-ne = 2000 ;(* average photon number per spot *)
-dc = 0.1; (* dark current (e/pixel) *)
-cg = 0.609; (* electrons/DN *)
